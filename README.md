@@ -1,24 +1,25 @@
-# configuration for neovim
+# Configuration for neovim
 
-This is a neovim configuration for python and go.
+This is a neovim configuration for (main)python and go.
 But it is almost compatiable with vim8 (not test). 
 
 ## Install
 
-### requirements
+### Requirements
 
 `
 yum install exuberant-ctags silversearcher-ag
 pip install flake8 pep8 pycodestyle isort yapf pylama pylint pynvim
 `
-### download script and install
+### Download script and install
 
 `
-wget https://rawgithubusercontent.com/wanchaosoft/daevim/master/install.sh && ./install.sh
+wget https://rawgithubusercontent.com/wanchaosoft/daenvim/master/install.sh && ./install.sh
 `
+
 > Now only test for centos
 
-## Non-Plugins
+## Non-Plugins Version
 
 > [daevim](https://github.com/wanchaosoft/daevim)
 
@@ -33,14 +34,14 @@ wget https://rawgithubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O 
 - nerdtree
 - nerdcommenter
 - python-mode
-- vim-go
-- ultisnips
-- vim-snippets
-- lightline.vim
-- vim-rainbow
 - jedi-vim
 - vim-isort
 - vim-virtualenv
+- vim-go
+- UltiSnips
+- vim-snippets
+- lightline.vim
+- vim-rainbow
 - tagbar
 - vim-monokai-tasty
 - challenger-deep-theme.vim
@@ -53,7 +54,7 @@ wget https://rawgithubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O 
 
 ## Thanks
 
-- [fisadev](http://vimfisadev.com)
+- [fisadev](http://github.com/fisadev/fisa-vim-config)
 - `vimawesome.com` for plugins
 - [k-vim](https://github.com/wklken/k-vim)
 
