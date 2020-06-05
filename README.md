@@ -9,12 +9,12 @@ But it is almost compatiable with vim8 (not test).
 
 `
 yum install exuberant-ctags silversearcher-ag
-pip install flake8 pep8 pycodestyle isort yapf pylama pylint pynvim
+pip install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
 `
 ### Download script and install
 
 `
-wget https://rawgithubusercontent.com/wanchaosoft/daenvim/master/install.sh && ./install.sh
+wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/install.sh && ./install.sh
 `
 
 > Now only test for centos
@@ -26,15 +26,15 @@ wget https://rawgithubusercontent.com/wanchaosoft/daenvim/master/install.sh && .
 or you can install it with:
 
 `
-wget https://rawgithubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O .vimrc
+wget https://raw.githubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O .vimrc
 `
 ## Plugins
 
 - fzf
 - nerdtree
 - nerdcommenter
+- ncm2
 - python-mode
-- jedi-vim
 - vim-isort
 - vim-virtualenv
 - vim-go
@@ -57,7 +57,8 @@ wget https://rawgithubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O 
 - [fisadev](http://github.com/fisadev/fisa-vim-config)
 - `vimawesome.com` for plugins
 - [k-vim](https://github.com/wklken/k-vim)
+- [b-vim](https://github.com/nine2/b-vim)
 
 ## Congratulations
 
-Just enjoy yourself.
+Just enjoy yourself !

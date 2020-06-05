@@ -1,6 +1,10 @@
 " Vim settings
 
 set encoding=utf-8
+
+" ================= Install Vim-Plug ====================
+" Only your first open nvim/vim8
+
 let using_neovim = has('nvim')
 let using_vim = !using_neovim
 
@@ -34,24 +38,22 @@ else
     call plug#begin("~/.vim/plugged")
 endif
 
-" ============== Plugins ===============
+" ============== Plugin List ===============
+
+Plug 'ncm2/ncm2-vim'
 " color brackets
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 " light status line
 Plug 'itchyny/lightline.vim'
-" Python autocomplete
-"Plug 'deoplete-plugins/deoplete-jedi'
 
 " For python3 only
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" Automatically close parenthesis, etc
-Plug 'davidhalter/jedi-vim'
-"Plug 'tell-k/vim-autopep8'
-" Automatically sort python imports
-Plug 'fisadev/vim-isort'
 
-Plug 'jmcantrell/vim-virtualenv'
+" Automatically sort python imports
+Plug 'fisadev/vim-isort', { 'for': 'python' }
+
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
@@ -65,7 +67,6 @@ Plug 'Townk/vim-autoclose'
 " Surround
 Plug 'tpope/vim-surround'
 
-"Plug 'mileszs/ack.vim'
 " Paint css colors with the real color
 Plug 'lilydjwg/colorizer'
 " Git/mercurial/others diff icons on the side of the file lines
@@ -76,7 +77,7 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 't9md/vim-choosewin'
 
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 Plug 'mattn/emmet-vim'
 " high speed html and css
@@ -90,6 +91,23 @@ Plug 'scrooloose/nerdcommenter'
 
 " fold
 Plug 'tmhedberg/SimpylFold'
+
+" ncm2 for completation
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+" python async autocompletation
+Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
+"Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-pyclang'
+" Require ultisnips plugin
+Plug 'ncm2/ncm2-ultisnips'
+" Subscope detection
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-rst-subscope'
 
 " Track the engine
 Plug 'SirVer/ultisnips'
@@ -107,13 +125,34 @@ endif
 
 " Plugin Setting ========================================
 
-" vim-rainbow
+" Require for all jedi Plugins: deoplete-jedi, vim-jedi, ncm2-jedi
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+" ncm2 settings
+" suppress thre annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANT :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" CTRL-C don't trigger the InsertLeave autocmd
+inoremap <c-c> <ESC>
+" Ctrl-j,Ctrl-k to select the popup menu:
+inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
+inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+
+
+"  =============== vim-rainbow =============== 
 let g:rainbow_active=1
 
 " lightline
 set laststatus=2
 " no use default --INSERT--
 set noshowmode
+" TODO: setting for pylint Warning,Error
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
@@ -121,7 +160,7 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right':[ ['lineinfo'],
       \             ['percent'],
-      \             ['fileformat', 'fileencoding', 'filetype'] ]
+      \             ['fileformat', 'fileencoding' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
@@ -167,11 +206,6 @@ endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
 
-" Ack.vim --------------------------
-
-" mappings
-"nmap <leader>r :Ack
-"nmap <leader>wr :execute ":Ack " . expand('<cword>')<CR>
 
 " Signify --------------------------
 
@@ -234,17 +268,6 @@ nmap <leader>c :Commands<CR>
 " :Filetypes
 
 
-" Deoplete -----------------------------
-
-" Use deoplete.
-"let g:deoplete#enable_at_startup = 1
-"call deoplete#custom#option({
-"            \   'ignore_case': v:true,
-"            \   'smart_case': v:true,
-"            \})
-" complete with words from any opened file
-"let g:context_filetype#same_filetypes = {}
-"let g:context_filetype#same_filetypes._ = '_'
 
 " SimpylFold ---------------------------
 
@@ -255,42 +278,6 @@ let b:SimpylFold_fold_docstring = 1
 let g:SimpylFold_fold_import = 1
 let b:SimpylFold_fold_import = 1
 
-" Python-Mode ==========================
-" :help pymode
-" virtualenv support
-" Run <leader>r
-" Add breakpoints <leader>b
-" Autofix PEP8 errors: PymodeLintAuto
-" Go to Definition: <C-c>g
-" Search in python documentation: <leader>K
-" python motions and operators: ]], 3]], ]]M, vaC, viM, daC, ciM
-
-" Jedi-vim ------------------------------
-
-" python autocompletion
-let g:jedi#completions_enabled = 1
-let g:jedi#completions_command = "<C-Space>"
-
-" All these mappings work only for python code:
-" Go to definition
-let g:jedi#goto_command = ',g'
-" Find ocurrences
-let g:jedi#usages_command = ',o'
-" Find assignments
-let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
-nmap ,d :tab split<CR>:call jedi#goto()<CR>>>
-
-" isort ===============================================
-
-let g:vim_isort_map='<C-i>'
-
-" vim-virtualenv =====================================
-
-" Usage:
-" :VirtualEnvList
-" :VirtualEnvActivate venv
-" :VirtualEnvDeactivate
 
 " Snippets ============================================
 
@@ -309,8 +296,11 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " into choosed filetype's snippets to edit
 "map <leader>us :UltiSnipsEdit<CR>
 
+" ncm2-ultisnips =============
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-" Common Setting ========================================
+
+" ================== ColorScheme ====================
 
 if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256')
     if !has('gui_running')
@@ -320,230 +310,28 @@ if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|s
 else
     colorscheme delek
 endif
-" remove ugly vertical lines on window division
-set fillchars+=vert:\
 
 
-" ===== Colors =====
-" no vi-compatible
-set nocompatible
-" syntax highlight on
-syntax on
-filetype plugin indent on
-set noswapfile
-" auto change work directory
-set autochdir
+" ================== Custom configurations ====================
 
-
-" ===== Leader key =====
-" leader is comma
-let mapleader=" "
-" quick into command mode
-nnoremap ; :
-
-
-" ===== UI Config =====
-" show command in bottom bar
-set number
-set relativenumber
-" show command in botton bar
-set showcmd
-" highlight current line
-set cursorline
-" hightlight column maxsize flag
-set colorcolumn=80,100,120
-" softbreak
-set linebreak
-" visual autocomplete for command menu
-set wildmenu
-" redraw only when we need to.
-set lazyredraw
-set history=100
-
-" ===== Fold =====
-set foldenable
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent
-" method: manual/indent/expr/syntax/diff/marker
-set foldlevel=99
-
-" highlight matching [{()}]
-set showmatch
-" search as characters are entered
-set incsearch
-" highlight matches
-set hlsearch
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" when scrolling, keep cursor 3 lines away from screen border
-set scrolloff=3
-" autocompletion of files and commands behaves like shell
-" (complete only the common part, list the options that match)
-set wildmode=list:longest,full
-
-" hide toolbar and menu
-set guioptions-=T
-set guioptions-=m
-" not show startup suomali
-set shortmess=atI
-" not ring
-set noerrorbells
-set novisualbell
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*,*\.DS_Store
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+" It has no any plugins.
+" It can use it as vimrc directly.
+let custom_common = '~/.config/nvim/custom/custom-default.vim'
+if filereadable(expand(custom_common))
+	execute 'source' expand(custom_common)
 endif
 
-" thin/long/wide/tree
-let g:netrw_liststyle=3
-" hide banner
-let g:netrw_banner=0
-" explore width/editor percent
-let g:netrw_winsize=25
 
-" ===== Edit =====
-" binary not eight num
-set nrformats-=octal
-set autoindent
-" let backspace can delete
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-" save undo history even though close vim
-set undofile
-" cursor in last left when you in the file.
-autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal`\"" | endif
+" Detailed python-mode settings for pythonist
+" It is so import that I move it to single vim file.
+let custom_pymode = '~/.config/nvim/custom/custom-pymode.vim'
+if filereadable(expand(custom_pymode))
+    execute 'source' expand(custom_pymode)
+endif
 
 
-" ===== Spaces & Tabs =====
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set ruler
-" tab length exceptions on some file types
-autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-" ===== Movement =====
-" move vertically by visual line, realline <=> visualine
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-" jk is escape, <ESC> is very far away. jk is a much better.
-inoremap jk <ESC>
-
-" move to beginning/end of line
-" 0 == ^
-"nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>w :w!<CR>
-
-" ===== Shortcut =====
-" tab navigation mappings
-map tn :tabn<CR>
-map tp :tabp<CR>
-"map tm :tabm
-map tt :tabnew
-map tc :tabclose<CR>
-map ts :tab split<CR>
-
-" ===== Buffer =====
-map <leader>bn :bn<CR>
-map <leader>bp :bp<CR>
-map <leader>bl :ls<CR>
-map <leader>bd :bd<CR>
-
-
-" navigate windows with meta+arrows
-map <M-Right> <c-w>l
-map <M-Left> <c-w>h
-map <M-Up> <c-w>k
-map <M-Down> <c-w>j
-
-imap <M-Right> <ESC><c-w>l
-imap <M-Left> <ESC><c-w>h
-imap <M-Up> <ESC><c-w>k
-imap <M-Down> <ESC><c-w>j
-
-" save as sudo
-ca w!! w !sudo tee "%"
-
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-" set fileencodings=ucs-bom,utf-8,chinese,cp936
-
-set nobackup
-set autoread
-" share with windows system clipboard
-set clipboard+=unnamed
-" paste not busy
-set nopaste
-set ignorecase smartcase
-
-" ============== AutoGroups ===============
-augroup configgroup
-    autocmd!
-    autocmd VimEnter * highlight clear SignColumn
-    " clear empty spaces at the end of lines on save of python files
-    autocmd BufWritePre *.py :%s/\s\+$//e
-    autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType ruby setlocal commentstring=#\ %s
-    autocmd FileType python setlocal commentstring=#\ %s
-    autocmd BufEnter *.cls setlocal filetype=java
-    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
-    autocmd BufEnter Makefile setlocal noexpandtab
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
-augroup END
-
-augroup md
-  autocmd!
-  au BufNewFile,BufRead *.md syntax keyword todo TODO FIX
-  au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
-augroup END
-
-" run python by F5
-map <F5> :call PRUN()<CR>
-func! PRUN()
-    exec "w"
-    if &filetype == 'python'
-        exec "!python %"
-    endif
-endfunc
-" ============== Finally ===============
-
+" must place after all settings
+" because plugins's setting will affect the following keymap
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>vv :vsp $MYVIMRC<CR>
 nnoremap <leader>so :source $MYVIMRC<CR>
-set pastetoggle=<F10>
-
-" Custom configurations ----------------
-
-" Include user's custom nvim configurations
-if using_neovim
-    let custom_configs_path = "~/.config/nvim/custom.vim"
-else
-    let custom_configs_path = "~/.vim/custom.vim"
-endif
-
-if filereadable(expand(custom_configs_path))
-    execute "source " . custom_configs_path
-endif
-
