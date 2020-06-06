@@ -1,16 +1,22 @@
 # Configuration for neovim
 
 This is a neovim configuration for (main)python and go.
-But it is almost compatiable with vim8 (not test). 
 
 ## Install
 
 ### Requirements
 
 `
-yum install exuberant-ctags silversearcher-ag
-pip install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
+sudo yum install exuberant-ctags silversearcher-ag
+sudo pip install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
+sudo pip3 install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
 `
+> Of Course, you first should install python and go
+
+### Go and Python
+
+由于众所周知的原因，你需要先设置pip国内源和go的国内源，百度一大把，这个可以自行解决。
+
 ### Download script and install
 
 `
@@ -21,19 +27,17 @@ wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/install.sh && 
 
 ## Non-Plugins Version
 
-> [daevim](https://github.com/wanchaosoft/daevim)
-
-or you can install it with:
+YOU CAN INSTALL IT WITH:
 
 `
-wget https://raw.githubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O .vimrc
+wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/custom/custom-default.vim  -O .vimrc
 `
 ## Plugins
 
 - fzf
 - nerdtree
 - nerdcommenter
-- ncm2
+- ncm2(and ncm2 series of plugins that's up to you, now for go and python)
 - python-mode
 - vim-isort
 - vim-virtualenv
@@ -53,6 +57,8 @@ wget https://raw.githubusercontent.com/wanchaosoft/daevim/master/.vimrc.local -O
 - SimpylFold
 
 ## Thanks
+
+> When finish my neovim settings, I used the following configuration for reference, and THANKS 
 
 - [fisadev](http://github.com/fisadev/fisa-vim-config)
 - `vimawesome.com` for plugins

@@ -1,9 +1,10 @@
-" Vim settings
+" Vim settings for Python, GO
 
 set encoding=utf-8
 
 " ================= Install Vim-Plug ====================
-" Only your first open nvim/vim8
+" Only install vim-plug when your first openning nvim/vim8
+" When you have `nvim`, It think you use nvim instead of vim
 
 let using_neovim = has('nvim')
 let using_vim = !using_neovim
@@ -32,6 +33,7 @@ if vim_plug_just_installed
     :execute 'source '.fnamescape(vim_plug_path)
 endif
 
+" ==================== Plugins Setting Start  =====================
 if using_neovim
     call plug#begin("~/.config/nvim/plugged")
 else
@@ -40,33 +42,29 @@ endif
 
 " ============== Plugin List ===============
 
-Plug 'ncm2/ncm2-vim'
 " color brackets
 Plug 'frazrepo/vim-rainbow'
+" Git support
 Plug 'tpope/vim-fugitive'
-" light status line
+" light status line different with powerline and airline
 Plug 'itchyny/lightline.vim'
 
 " For python3 only
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
 " Automatically sort python imports
 Plug 'fisadev/vim-isort', { 'for': 'python' }
-
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
+" tagbar for import, class, function, variables
 Plug 'majutsushi/tagbar'
 " colorscheme monokai like sublime
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " colortheme
 Plug 'Townk/vim-autoclose'
-
 " Surround
 Plug 'tpope/vim-surround'
-
 " Paint css colors with the real color
 Plug 'lilydjwg/colorizer'
 " Git/mercurial/others diff icons on the side of the file lines
@@ -79,28 +77,27 @@ Plug 't9md/vim-choosewin'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
-Plug 'mattn/emmet-vim'
 " high speed html and css
-
+Plug 'mattn/emmet-vim'
 " Code and files fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
 " commenter for most language
 Plug 'scrooloose/nerdcommenter'
-
 " fold
 Plug 'tmhedberg/SimpylFold'
 
-" ncm2 for completation
+" ncm2 framework for completation
 Plug 'ncm2/ncm2'
+" another remote plugin framework for neovim
 Plug 'roxma/nvim-yarp'
-
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 " python async autocompletation
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-"Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-go', { 'for': 'go' }
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh', 'for': 'go' }
+" completation for C/C++
 Plug 'ncm2/ncm2-pyclang'
 " Require ultisnips plugin
 Plug 'ncm2/ncm2-ultisnips'
@@ -311,11 +308,12 @@ else
     colorscheme delek
 endif
 
+" ==================== Plugins Setting End ====================
 
 " ================== Custom configurations ====================
 
 " It has no any plugins.
-" It can use it as vimrc directly.
+" You can use it as vimrc directly.
 let custom_common = '~/.config/nvim/custom/custom-default.vim'
 if filereadable(expand(custom_common))
 	execute 'source' expand(custom_common)
