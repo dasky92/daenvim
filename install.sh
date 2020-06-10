@@ -14,7 +14,7 @@ case "$OSTYPE" in
       ;;
 esac
 
-sudo pip install pep8 autopep8 pycodestyle flake8 pyflakes isort mccabe pylint rope pynvim
+sudo pip install jedi pep8 autopep8 pycodestyle flake8 pyflakes isort mccabe pylint rope pynvim
 
 echo '==============================='
 echo 'start to download vimrc/init.vim file'

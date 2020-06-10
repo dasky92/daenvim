@@ -48,6 +48,7 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 " light status line different with powerline and airline
 Plug 'itchyny/lightline.vim'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " For python3 only
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -58,10 +59,8 @@ Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " tagbar for import, class, function, variables
 Plug 'majutsushi/tagbar'
-" colorscheme monokai like sublime
-Plug 'patstockwell/vim-monokai-tasty'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-" colortheme
+" colorscheme theme
+Plug 'morhetz/gruvbox'
 Plug 'Townk/vim-autoclose'
 " Surround
 Plug 'tpope/vim-surround'
@@ -101,15 +100,13 @@ Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/sy
 Plug 'ncm2/ncm2-pyclang'
 " Require ultisnips plugin
 Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Subscope detection
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-markdown-subscope'
 Plug 'ncm2/ncm2-rst-subscope'
 
-" Track the engine
-Plug 'SirVer/ultisnips'
-" Snippets are seperated from the engine
-Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -180,20 +177,33 @@ map <F2> :NERDTreeToggle<CR>
 nmap <leader>t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIngore = ['\.pyc$', '\.pyo$']
+let NERDTreeShowLineNumbers = 1
 " Enable folder icons
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:DevIconsEnableFoldersOpenClose = 1
 
 " Fix directory colors
-highlight! link NERDTreeFlags NERDTreeDir
+"highlight! link NERDTreeFlags NERDTreeDir
 
 " Remove expandable arrow
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
-let g:WebDevIconsUnicodeDecorateFolderNodes ="v:true"
-let NERDTreeDirArrowExpandable = "\u00a0"
-let NERDTreeDirArrowCollapsible = "\u00a0"
-let NERDTreeNodeDelimiter = "\x07"
+"let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+"let g:WebDevIconsUnicodeDecorateFolderNodes ="v:true"
+let NERDTreeDirArrowExpandable = "►"
+let NERDTreeDirArrowCollapsible = "▼"
+let NERDTreeNodeDelimiter = "\u00b7" " middle dot
 
+"let g:NERDTreeIndicatorMapCustom = {
+"    \ "Modified"  : "✹",
+"    \ "Staged"    : "✚",
+"    \ "Untracked" : "✭",
+"    \ "Renamed"   : "➜",
+"    \ "Unmerged"  : "═",
+"    \ "Deleted"   : "✖",
+"    \ "Dirty"     : "✗",
+"    \ "Clean"     : "✔︎",
+"    \ 'Ignored'   : '☒',
+"    \ "Unknown"   : "?"
+"    \ }
 " Autorefresh on tree focus
 function! NERDTreeRefresh()
     if &filetype == "nerdtree"
@@ -303,7 +313,7 @@ if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|s
     if !has('gui_running')
         let &t_Co = 256
     endif
-    colorscheme vim-monokai-tasty
+    colorscheme gruvbox
 else
     colorscheme delek
 endif
@@ -332,4 +342,6 @@ endif
 " because plugins's setting will affect the following keymap
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>vv :vsp $MYVIMRC<CR>
-nnoremap <leader>so :source $MYVIMRC<CR>
+" not used frequently, recommend close. You can open when you setting you vim
+" frequently.
+"nnoremap <leader>so :source $MYVIMRC<CR>

@@ -76,7 +76,7 @@ let g:pymode_doc_bind = ',k'
 
 " ==> Rope support for refactoring operations
 
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 
 " default '<C-c>d'
 let g:pymode_rope_show_doc_bind = ',c'
@@ -92,10 +92,10 @@ let g:pymode_rope_goto_definition_bind = ',g'
 " ==> Refactoring
 
 " keymap for rename method/function/class/variables under curosr
-let g:pymode_rope_rename_bind = '<C-c>rr'
+"let g:pymode_rope_rename_bind = '<C-c>rr'
 
 " rename module/package
-let g:pymode_rope_rename_module_bind = '<C-c>rlr'
+"let g:pymode_rope_rename_module_bind = '<C-c>rlr'
 
 " organize imports sorts imports,too. It does that according to PEP8. Unsed
 " imports will be dropped.
@@ -109,12 +109,12 @@ let g:pymode_rope_organize_imports_bind = '<C-i>'
 "let g:pymode_rope_autoimport_bind = '<C-c>ra'
 
 " Extract method/variable
-let g:pymode_rope_extract_method_bind = '<C-c>rm'
-let g:pymode_rope_extract_variable_bind = '<C-c>rl'
+"let g:pymode_rope_extract_method_bind = '<C-c>rm'
+"let g:pymode_rope_extract_variable_bind = '<C-c>rl'
 " Move method/fields
-let g:pymode_rope_move_bind = '<C-c>rv'
+"let g:pymode_rope_move_bind = '<C-c>rv'
 " Change function signature
-let g:pymode_rope_change_signature_bind = '<C-c>rs'
+"let g:pymode_rope_change_signature_bind = '<C-c>rs'
 
 
 

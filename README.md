@@ -4,15 +4,13 @@ This is a neovim configuration for (main)python and go.
 
 ## Install
 
-### Requirements
+### Requirements(required by pymode)
 
-`
-sudo yum install exuberant-ctags silversearcher-ag
-sudo pip install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
-sudo pip3 install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
-`
 > Of Course, you first should install python and go
 
+`
+sudo pip install jedi pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pylama pylint pynvim
+`
 ### Go and Python
 
 由于众所周知的原因，你需要先设置pip国内源和go的国内源，百度一大把，这个可以自行解决。
@@ -20,7 +18,7 @@ sudo pip3 install pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf pyla
 ### Download script and install
 
 `
-wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/install.sh && ./install.sh
+wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/install.sh && chmod 777 install.sh && ./install.sh
 `
 
 > Now only test for centos
@@ -34,21 +32,16 @@ wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/custom/custom-
 `
 ## Plugins
 
+### common plugins
+
 - fzf
 - nerdtree
 - nerdcommenter
-- ncm2(and ncm2 series of plugins that's up to you, now for go and python)
-- python-mode
-- vim-isort
-- vim-virtualenv
-- vim-go
 - UltiSnips
 - vim-snippets
 - lightline.vim
 - vim-rainbow
 - tagbar
-- vim-monokai-tasty
-- challenger-deep-theme.vim
 - vim-autoclose
 - colorizer
 - vim-signify
@@ -56,12 +49,30 @@ wget https://raw.githubusercontent.com/wanchaosoft/daenvim/master/custom/custom-
 - emmet-vim
 - SimpylFold
 
+### autocomplete
+
+- ncm2(and ncm2 series of plugins that's up to you, now for go and python)
+
+### python plugins
+
+- python-mode
+- vim-isort
+- vim-virtualenv
+
+### go plugins
+
+- vim-go
+
+### themes
+
+- gruvbox
+
 ## Thanks
 
 > When finish my neovim settings, I used the following configuration for reference, and THANKS 
 
 - [fisadev](http://github.com/fisadev/fisa-vim-config)
-- `vimawesome.com` for plugins
+- `[vimawesome.com](vimawesome.com)` for plugins
 - [k-vim](https://github.com/wklken/k-vim)
 - [b-vim](https://github.com/nine2/b-vim)
 

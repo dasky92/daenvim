@@ -206,7 +206,7 @@ map <F5> :call PRUN()<CR>
 func! PRUN()
     exec "w"
     if &filetype == 'python'
-        exec "!python %"
+        exec "!python3 %"
     endif
 endfunc
 
