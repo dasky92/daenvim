@@ -61,6 +61,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 " colorscheme theme
 Plug 'morhetz/gruvbox'
+" colortheme
 Plug 'Townk/vim-autoclose'
 " Surround
 Plug 'tpope/vim-surround'
@@ -239,27 +240,19 @@ let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
 
 " Fzf ----------------------------
 " file finder mapping
-nmap <C-p> :Files<CR>
-" buffer finder mapping
-nmap <C-e> :Buffers<CR>
+"nmap <C-p> :Files<CR>
+nmap <C-p> :GFiles<CR>
 " tags (symbols) in current file finder mapping
 nmap <leader>g :BTag<CR>
-" the same, but with the word under the cursor pre filled
-nmap <leader>wg :execute ":BTag " . expand('<cword>')<CR>
 " tags (symbols) in all files finder mapping
 nmap <leader>G :Tags<CR>
-" the same, but with the word under the cursor pre filled
-nmap <leader>wG :execute ":Tags " . expand('<cword>')<CR>
 " general code finder in current file mapping
 nmap <leader>f :BLines<CR>
-" the same, but with the word under the cursor pre filled
-nmap <leader>wf :execute ":BLines " . expand('<cword>')<CR>
 " general code finder in all files mapping
 nmap <leader>F :Lines<CR>
-" the same, but with the word under the cursor pre filled
-nmap <leader>wF :execute ":Lines " . expand('<cword>')<CR>
 " commands finder mapping
-nmap <leader>c :Commands<CR>
+" TODO: used often???
+"nmap <leader>c :Commands<CR>
 " :GFiles [OPTS]       Git files (git ls-files)
 " :GFiles?             git status
 " :Colors              colorschemes

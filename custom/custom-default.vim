@@ -210,3 +210,9 @@ func! PRUN()
     endif
 endfunc
 
+" the following already existed in init.vim file, but this file as vimrc file
+" must have its.
+" nnoremap <leader>vv :vsp $MYVIMRC<CR>
+" not used frequently, recommend close. You can open when you setting you vim
+" frequently.
+"nnoremap <leader>so :source $MYVIMRC<CR>
