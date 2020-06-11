@@ -137,10 +137,10 @@ map tc :tabclose<CR>
 map ts :tab split<CR>
 
 " ===== Buffer =====
-map <leader>bn :bn<CR>
-map <leader>bp :bp<CR>
-map <leader>bl :ls<CR>
-map <leader>bd :bd<CR>
+map bn :bn<CR>
+map bp :bp<CR>
+map bl :ls<CR>
+map bd :bd<CR>
 
 
 " navigate windows with meta+arrows
