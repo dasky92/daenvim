@@ -123,8 +123,7 @@ nnoremap E $
 " $/^ doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>qq :q!<CR>
+nnoremap zz :q!<CR>
 nnoremap <leader>w :w!<CR>
 
 " ===== Shortcut =====
