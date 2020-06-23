@@ -1,4 +1,17 @@
 
+" which_key_map
+set timeoutlen=500
+" leader key locate after plugins.
+"let g:mapleader = "\<Space>"
+"let g:maplocalleader = ','
+" load when needed
+"autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+call which_key#register('<Space>', 'g:which_key_map')
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader>      :<c-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
 " Vim-WhichKey ===========================================
 " hide a group of non-top level mappings
 " let g:which_key_map['_'] = { 'name': 'which_key_ignore' }

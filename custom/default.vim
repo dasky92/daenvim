@@ -233,3 +233,4 @@ nnoremap <leader>fr :call ChangeReadOnly()<cr>
 " Ctrl-j,Ctrl-k to select the popup menu:
 "inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
 "inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+nnoremap <silent> <leader>fc :vsp $MYVIMRC<CR>
