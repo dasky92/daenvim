@@ -57,12 +57,15 @@ set scrolloff=3
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
 set wildmode=list:longest,full
+" IMPORTANT PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 
 " hide toolbar and menu
 set guioptions-=T
 set guioptions-=m
 " not show startup suomali
 set shortmess=atI
+set shortmess+=c
 " not ring
 set noerrorbells
 set novisualbell
@@ -114,6 +117,7 @@ nnoremap gj j
 nnoremap gk k
 " jk is escape, <ESC> is very far away. jk is a much better.
 inoremap jk <ESC>
+inoremap <c-c> <ESC>
 
 " move to beginning/end of line
 " 0 == ^
@@ -124,7 +128,7 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap zz :q!<CR>
-nnoremap <leader>w :w!<CR>
+nnoremap <leader>fs :w!<CR>
 
 " ===== Shortcut =====
 " tab navigation mappings
@@ -136,10 +140,11 @@ map tc :tabclose<CR>
 map ts :tab split<CR>
 
 " ===== Buffer =====
-map bn :bn<CR>
-map bp :bp<CR>
-map bl :ls<CR>
-map bd :bd<CR>
+" these keymap could slow `b` motion
+"map bn :bn<CR>
+"map bp :bp<CR>
+"map bl :ls<CR>
+"map bd :bd<CR>
 
 
 " navigate windows with meta+arrows
@@ -162,6 +167,7 @@ set fileencoding=utf-8
 " set fileencodings=ucs-bom,utf-8,chinese,cp936
 
 set nobackup
+set nowritebackup
 set autoread
 " share with windows system clipboard
 set clipboard+=unnamed
@@ -190,7 +196,12 @@ augroup END
 
 augroup md
   autocmd!
+  " highlight key word
+  au Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
+  "au Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
   au BufNewFile,BufRead *.md syntax keyword todo TODO FIX
+  " get correct comment highlight for json file
+  au FileType json syntax match Comment +\/\/.\+$+
   au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
 augroup END
 
@@ -209,9 +220,16 @@ func! PRUN()
     endif
 endfunc
 
-" the following already existed in init.vim file, but this file as vimrc file
-" must have its.
-" nnoremap <leader>vv :vsp $MYVIMRC<CR>
-" not used frequently, recommend close. You can open when you setting you vim
-" frequently.
-"nnoremap <leader>so :source $MYVIMRC<CR>
+" change file mode between ReadWrite and ReadOnly
+function! ChangeReadOnly()
+    if(&readonly == 1)
+        set noreadonly
+    else
+        set readonly
+    endif
+endfunc
+nnoremap <leader>fr :call ChangeReadOnly()<cr>
+
+" Ctrl-j,Ctrl-k to select the popup menu:
+"inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
+"inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
