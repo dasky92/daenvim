@@ -17,6 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 " colorscheme theme
 Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 " `.` repeat extend
