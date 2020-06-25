@@ -41,8 +41,8 @@ let g:which_key_map.c = {
 let g:which_key_map.d = { 'name': 'Document' }
 let g:which_key_map.f = {
             \ 'name': '+Files/format',
-            \ 'f': "files",
-            \ 'g': "find-git-project-files",
+            \ 'f': "git-files",
+            \ 'g': "git-file-lines",
             \ 'm': 'format-selection',
             \ 'r': 'readonly-mode',
             \ 'x': 'fix-current-line',

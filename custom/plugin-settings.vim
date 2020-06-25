@@ -78,8 +78,15 @@ highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 
 " Fzf ----------------------------
 " file finder mapping
-nnoremap <leader>ff :Files<CR>
-nmap <leader>fg :GFiles<CR>
+" Custom command GGrep, search lines within git root path
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+"nnoremap <leader>ff :Files<CR>
+nmap <leader>ff :GFiles<CR>
+nmap <leader>fg :GGrep<CR>
 " tags (symbols) in current file finder mapping
 nmap <leader>tt :BTag<CR>
 " tags (symbols) in all files finder mapping
@@ -119,6 +126,7 @@ nmap <leader>k :Maps<CR>
 "imap <c-x><c-k> <plug>(fzf-complete-word)
 "imap <c-x><c-f> <plug>(fzf-complete-path)
 "imap <c-x><c-l> <plug>(fzf-complete-line)
+
 
 " SimpylFold ---------------------------
 
