@@ -81,18 +81,20 @@ highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 nnoremap <leader>ff :Files<CR>
 nmap <leader>fg :GFiles<CR>
 " tags (symbols) in current file finder mapping
-nmap <leader>tl :BTag<CR>
+nmap <leader>tt :BTag<CR>
 " tags (symbols) in all files finder mapping
-"nmap <leader>Tl :Tags<CR>
+nmap <leader>tT :Tags<CR>
 " general code finder in current file mapping
 nmap <leader>ss :BLines<CR>
 " general code finder in all files mapping
 nmap <leader>sS :Lines<CR>
 " commands finder mapping
 " TODO: used often???
-"nmap <leader>c :Commands<CR>
+"nmap <leader>cc :Commands<CR>
 " vim help
 nmap <leader>h :Helptags<CR>
+" key-map-settings
+nmap <leader>k :Maps<CR>
 " :GFiles [OPTS]       Git files (git ls-files)
 " :GFiles?             git status
 " :Colors              colorschemes
@@ -104,8 +106,19 @@ nmap <leader>h :Helptags<CR>
 " :(B)Commits          Git commits(require fugitive.vim)
 " :Commands
 " :Maps                Normal mode mappings
+" :Buffers             Buffer list
 " :Helptags
 " :Filetypes
+" Custom your command 'search git lines in project'
+
+" Mapping selecting mappings
+"nmap <leader><tab> <plug>(fzf-maps-n)
+"xmap <leader><tab> <plug>(fzf-maps-x)
+"omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " SimpylFold ---------------------------
 

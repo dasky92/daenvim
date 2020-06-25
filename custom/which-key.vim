@@ -18,71 +18,74 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 let g:which_key_map = {}
 
-let g:which_key_map.b = {
-      \ 'name' : '+buffer' ,
-      \ 'b' : ['Buffers'   , 'fzf-buffer']      ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'j' : ['bnext'     , 'next-buffer']     ,
-      \ 'k' : ['bprevious' , 'previous-buffer'] ,
-      \ }
+let g:which_key_map['?'] = { 'name': 'init.vim/vimrc' }
+
+" fzf-buffers
+nnoremap <leader>b :Buffers<CR>
+let g:which_key_map.b = { 'name': 'Buffers' }
 
 let g:which_key_map.c = {
             \ 'name': '+CocList/commands',
-            \ 'c': 'Commands',
-            \ 'd': 'diagnostic',
-            \ 'e': 'extensions',
-            \ 'j': 'CocNext',
-            \ 'k': 'CocPrev',
-            \ 'p': 'CocListResume',
-            \ 's': 'Symbols',
-            \ 'o': 'Outline',
-            \ 'y': 'YankList',
-            \ 'n': 'snippets',
+            \ 'c': 'coc-commands',
+            \ 'd': 'coc-diagnostic',
+            \ 'e': 'coc-extensions',
+            \ 'n': 'coc-next',
+            \ 'o': 'coc-outline',
+            \ 'p': 'coc-prev',
+            \ 's': 'coc-snippets',
+            \ 'r': 'cocListResume',
+            \ 't': 'coc-symbols',
+            \ 'y': 'coc-yankList',
             \ }
 
+let g:which_key_map.d = { 'name': 'Document' }
 let g:which_key_map.f = {
-            \ 'name': '+files/format',
-            \ 'c': 'OpenVimrcFile',
-            \ 'f': "Files",
-            \ 'g': "GitFiles",
-            \ 'm': 'Format Selection',
-            \ 'r': 'ReadOnlyMode',
-            \ 's': 'Save',
-            \ 'x': 'FixCurrentLine',
+            \ 'name': '+Files/format',
+            \ 'f': "files",
+            \ 'g': "find-git-project-files",
+            \ 'm': 'format-selection',
+            \ 'r': 'readonly-mode',
+            \ 'x': 'fix-current-line',
             \ }
 
 let g:which_key_map.g = {
             \ 'name': '+Gotos',
-            \ 'd': 'Difinition',
+            \ 'd': 'definition',
             \ 'j': 'diagnostic-next',
             \ 'k': 'diagnostic-prev',
-            \ 'y': 'TypeDifinition',
-            \ 'i': 'Implementation',
-            \ 'r': 'Reference',
+            \ 'y': 'type-definition',
+            \ 'i': 'implementation',
+            \ 'r': 'reference',
             \ }
 
-let g:which_key_map.h = { 'name': 'Helps' }
+let g:which_key_map.h = { 'name': '+Helps' }
 
-let g:which_key_map.k = { 'name': 'ShowDocument' }
+let g:which_key_map.k = { 'name': 'key-map' }
 
-let g:which_key_map.r = {
-            \ 'name': '+rename',
-            \ 'n': 'rename',
-            \ }
+" conque-shell
+let g:which_key_map.p = { 'name': 'SendToREPL' }
 
+let g:which_key_map.r = { 'name': 'Rename' }
+
+" TODO: fzf search git files
 let g:which_key_map.s = {
-            \ 'name': 'Search',
-            \ 'f': 'CurrentFileSearch',
-            \ 's': 'CurrentDirFiles',
-            \ 'j': 'signify next',
-            \ 'k': 'signify prec',
+            \ 'name': '+Search',
+            \ 's': 'search-current-file',
+            \ 'S': 'search-all-open-files',
+            \ 'j': 'signify-next',
+            \ 'k': 'signify-prec',
             \ }
+
+let g:which_key_map.t = {
+            \ 'name': '+Tags',
+            \ 't': 'buffer-tags',
+            \ 'T': 'all-files-tags',
+            \ }
+
 
 let g:which_key_map.w = {
-      \ 'name' : '+windows' ,
-      \ 'w' : ['<C-w>w'     , 'other-window']          ,
+      \ 'name' : '+Windows/write' ,
+      \ 'o' : ['<C-w>w'     , 'other-window']          ,
       \ 'd' : ['<C-w>c'     , 'delete-window']         ,
       \ '-' : ['<C-w>s'     , 'split-window-below']    ,
       \ '|' : ['<C-w>v'     , 'split-window-right']    ,

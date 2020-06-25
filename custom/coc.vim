@@ -63,7 +63,7 @@ nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -77,7 +77,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>r <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>fm  <Plug>(coc-format-selected)
@@ -132,16 +132,16 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>ct  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>cr  :<C-u>CocListResume<CR>
 " Open yank list (-A)auto preview on (--normal)normal mode
 nnoremap <silent> <leader>cy  :<C-u>CocList -A --normal yank<cr>
-nnoremap <silent> <leader>cn  :<C-u>CocList snippets<CR>
+nnoremap <silent> <leader>cs  :<C-u>CocList snippets<CR>
 " Clear all yanks
 ":CocCommand yank.clean
 

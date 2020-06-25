@@ -1,5 +1,14 @@
 " NO Plugins used here
-"
+
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+" set fileencodings=ucs-bom,utf-8,chinese,cp936
+
+" which_key_map already set leader, so comment here
+" If use this file as vimrc, nocomment next line please
+"let mapleader=" "
+
 " ===== Colors =====
 " no vi-compatible
 set nocompatible
@@ -11,9 +20,6 @@ set noswapfile
 set autochdir
 
 
-" ===== Leader key =====
-" leader is comma
-let mapleader=" "
 " quick into command mode
 nnoremap ; :
 
@@ -127,8 +133,8 @@ nnoremap E $
 " $/^ doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
-nnoremap zz :q!<CR>
-nnoremap <leader>fs :w!<CR>
+nnoremap zz :wq!<CR>
+"nnoremap <leader>w :w!<CR>
 
 " ===== Shortcut =====
 " tab navigation mappings
@@ -141,10 +147,14 @@ map ts :tab split<CR>
 
 " ===== Buffer =====
 " these keymap could slow `b` motion
-"map bn :bn<CR>
-"map bp :bp<CR>
-"map bl :ls<CR>
-"map bd :bd<CR>
+" buffer next
+map bn :bn<CR>
+" buffer previous
+map bp :bp<CR>
+" buffer delete
+map bd :bd<CR>
+" :b1 -> buffer 1
+" b2,b3,..., and so on.
 
 
 " navigate windows with meta+arrows
@@ -161,10 +171,6 @@ imap <M-Down> <ESC><c-w>j
 " save as sudo
 ca w!! w !sudo tee "%"
 
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-" set fileencodings=ucs-bom,utf-8,chinese,cp936
 
 set nobackup
 set nowritebackup
@@ -206,7 +212,7 @@ augroup md
 augroup END
 
 
-set pastetoggle=<F10>
+set pastetoggle=<F9>
 
 " remove ugly vertical lines on window division
 set fillchars+=vert:\
@@ -233,4 +239,4 @@ nnoremap <leader>fr :call ChangeReadOnly()<cr>
 " Ctrl-j,Ctrl-k to select the popup menu:
 "inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
 "inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
-nnoremap <silent> <leader>fc :vsp $MYVIMRC<CR>
+nnoremap <silent> <leader>\? :vsp $MYVIMRC<CR>
