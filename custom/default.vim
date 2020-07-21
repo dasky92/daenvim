@@ -124,7 +124,8 @@ nnoremap gk k
 " jk is escape, <ESC> is very far away. jk is a much better.
 inoremap jk <ESC>
 inoremap <c-c> <ESC>
-
+" Change 'exit terminal command' to general
+"tnoremap <c-c> <C-\><C-n>
 " move to beginning/end of line
 " 0 == ^
 "nnoremap B ^
@@ -239,4 +240,4 @@ nnoremap <leader>fr :call ChangeReadOnly()<cr>
 " Ctrl-j,Ctrl-k to select the popup menu:
 "inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
 "inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
-nnoremap <silent> <leader>\? :vsp $MYVIMRC<CR>
+nnoremap <silent> <leader>? :vsp $MYVIMRC<CR>

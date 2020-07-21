@@ -1,4 +1,5 @@
 " vim-repl.vim
+" To exit command mode, <C-\><C-n>
 " {{{
 let g:repl_program = {
             \   'python': ['ipython'],

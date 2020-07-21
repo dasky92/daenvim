@@ -148,4 +148,12 @@ let b:SimpylFold_fold_import = 1
 " ds{ds) ->  hello world
 " ysiw<em> -> <em>hello</em> world
 
+
+" vim-Surround ========================================
+" :1,2Commentary -> 1line-2line
+" gcc -> comment the line
+" gcap -> comment out a paragraph
+" :g/TODO/Commentary ?
+" TODO: ctrl+/ shortcut setting
+
 " }}}
