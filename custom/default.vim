@@ -201,6 +201,8 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup END
 
+autocmd FileType vim setlocal foldmethod=marker
+
 augroup md
   autocmd!
   " highlight key word

@@ -10,6 +10,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 " light status line different with powerline and airline
 Plug 'itchyny/lightline.vim'
+" show indent lines
+Plug 'valloric/vim-indent-guides'
 " Directory Manager
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
