@@ -8,15 +8,6 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/colorscheme.vim'
 " execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/coc.vim'
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/repl.vim'
 
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/default.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/plug.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/plugins.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/plugin-settings.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/colorscheme.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/coc.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/custom/repl.vim'
-
-
 " After all settings
 
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/which-key.vim'
