@@ -71,18 +71,18 @@ let g:which_key_map.r = { 'name': 'rename' }
 " Conflict with leader-s
 " TODO: fzf search git files
 let g:which_key_map.s = {
-            \ 'name': '+search',
-            \ 's':    'search-current-file',
-            \ 'S':    'search-all-open-files',
-            \ 'j':    'signify-next',
-            \ 'k':    'signify-prec',
-            \ }
+    \ 'name': '+search',
+    \ 's':    'search-current-file',
+    \ 'S':    'search-all-open-files',
+    \ 'j':    'signify-next',
+    \ 'k':    'signify-prec',
+    \ }
 
 let g:which_key_map.t = {
-            \ 'name': '+tags',
-            \ 't':    'buffer-tags',
-            \ 'T':    'all-files-tags',
-            \ }
+    \ 'name': '+tags',
+    \ 't':    'buffer-tags',
+    \ 'T':    'all-files-tags',
+    \ }
 
 
 let g:which_key_map.w = {

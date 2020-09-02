@@ -1,16 +1,17 @@
 " Vim settings for Python, Go
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/default.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/plug.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/plugins.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/plugin-settings.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/colorscheme.vim'
-" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/coc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/repl.vim'
+let g:init = '/init'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/default.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plug.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugin-settings.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/colorscheme.vim'
+" execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/coc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/repl.vim'
 
 " After all settings
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/custom/which-key.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/which-key.vim'
 
 
 " ================ often commands

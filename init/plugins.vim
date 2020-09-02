@@ -2,6 +2,8 @@
 " {{{
 call plug#begin(plug_begin)
 
+" start ui
+Plug 'mhinz/vim-startify'
 " color brackets
 Plug 'frazrepo/vim-rainbow'
 " Git support
@@ -34,8 +36,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " fold
 Plug 'tmhedberg/SimpylFold'
-" Snippets for different language
+" Supply Mechanism for self-defined snippets 
 Plug 'sirver/ultisnips'
+" Predefined snippets
+Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " language code repl
 Plug 'sillybun/vim-repl' 
