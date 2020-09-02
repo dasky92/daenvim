@@ -6,6 +6,7 @@ if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|s
         let &t_Co = 256
     endif
     colorscheme gruvbox
+    " colorscheme molokai
 else
     colorscheme delek
 endif

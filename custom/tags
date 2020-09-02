@@ -1,0 +1,144 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$	default.vim	/^nnoremap $ <nop>$/;"	m
+;	default.vim	/^nnoremap ; :$/;"	m
+<C-d>	coc.vim	/^nmap <silent> <C-d> <Plug>(coc-range-select)$/;"	m
+<C-j>	coc.vim	/^inoremap <expr> <C-j> pumvisible() ? "\\<C-n>" : "\\<C-j>"$/;"	m
+<C-k>	coc.vim	/^inoremap <expr> <C-k> pumvisible() ? "\\<C-p>" : "\\<C-k>"$/;"	m
+<F2>	plugin-settings.vim	/^map <F2> :NERDTreeToggle<CR>$/;"	m
+<F4>	plugin-settings.vim	/^map <F4> :TagbarToggle<CR>$/;"	m
+<F5>	default.vim	/^map <F5> :call PRUN()<CR>$/;"	m
+<TAB>	coc.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<c-space>	coc.vim	/^inoremap <silent><expr> <c-space> coc#refresh()$/;"	m
+<cr>	coc.vim	/^inoremap <expr> <cr> pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
+<cr>	coc.vim	/^inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\\<C-g>u\\<CR>"$/;"	m
+<leader>	which-key.vim	/^nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>$/;"	m
+<leader>	which-key.vim	/^vnoremap <silent> <leader>      :<c-u>WhichKeyVisual '<Space>'<CR>$/;"	m
+<leader><space>	default.vim	/^nnoremap <leader><space> :nohlsearch<CR>$/;"	m
+<leader>b	which-key.vim	/^nnoremap <leader>b :Buffers<CR>$/;"	m
+<leader>ca	coc.vim	/^nmap <leader>ca  <Plug>(coc-codeaction-selected)$/;"	m
+<leader>caa	coc.vim	/^nmap <leader>caa  <Plug>(coc-codeaction)$/;"	m
+<leader>cc	coc.vim	/^nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>$/;"	m
+<leader>cd	coc.vim	/^nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>$/;"	m
+<leader>ce	coc.vim	/^nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>$/;"	m
+<leader>cn	coc.vim	/^nnoremap <silent> <leader>cn  :<C-u>CocNext<CR>$/;"	m
+<leader>co	coc.vim	/^nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>$/;"	m
+<leader>cp	coc.vim	/^nnoremap <silent> <leader>cp  :<C-u>CocPrev<CR>$/;"	m
+<leader>cr	coc.vim	/^nnoremap <silent> <leader>cr  :<C-u>CocListResume<CR>$/;"	m
+<leader>cs	coc.vim	/^nnoremap <silent> <leader>cs  :<C-u>CocList snippets<CR>$/;"	m
+<leader>ct	coc.vim	/^nnoremap <silent> <leader>ct  :<C-u>CocList -I symbols<cr>$/;"	m
+<leader>cy	coc.vim	/^nnoremap <silent> <leader>cy  :<C-u>CocList -A --normal yank<cr>$/;"	m
+<leader>d	coc.vim	/^nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>$/;"	m
+<leader>ff	plugin-settings.vim	/^nmap <leader>ff :GFiles<CR>$/;"	m
+<leader>fg	plugin-settings.vim	/^nmap <leader>fg :GGrep<CR>$/;"	m
+<leader>fm	coc.vim	/^nmap <leader>fm  <Plug>(coc-format-selected)$/;"	m
+<leader>fx	coc.vim	/^nmap <leader>fx  <Plug>(coc-fix-current)$/;"	m
+<leader>gd	coc.vim	/^nmap <silent> <leader>gd <Plug>(coc-definition)$/;"	m
+<leader>gi	coc.vim	/^nmap <silent> <leader>gi <Plug>(coc-implementation)$/;"	m
+<leader>gj	coc.vim	/^nmap <silent> <leader>gj <Plug>(coc-diagnostic-next)$/;"	m
+<leader>gk	coc.vim	/^nmap <silent> <leader>gk <Plug>(coc-diagnostic-prev)$/;"	m
+<leader>gr	coc.vim	/^nmap <silent> <leader>gr <Plug>(coc-references)$/;"	m
+<leader>gy	coc.vim	/^nmap <silent> <leader>gy <Plug>(coc-type-definition)$/;"	m
+<leader>h	plugin-settings.vim	/^nmap <leader>h :Helptags<CR>$/;"	m
+<leader>i	repl.vim	/^nnoremap <leader>i :REPLToggle<Cr>$/;"	m
+<leader>k	plugin-settings.vim	/^nmap <leader>k :Maps<CR>$/;"	m
+<leader>r	coc.vim	/^nmap <leader>r <Plug>(coc-rename)$/;"	m
+<leader>s	default.vim	/^nnoremap <leader>s :w!<CR>$/;"	m
+<leader>sS	plugin-settings.vim	/^nmap <leader>sS :Lines<CR>$/;"	m
+<leader>sj	plugin-settings.vim	/^nmap <leader>sj <plug>(signify-next-hunk)$/;"	m
+<leader>sk	plugin-settings.vim	/^nmap <leader>sk <plug>(signify-prev-hunk)$/;"	m
+<leader>ss	plugin-settings.vim	/^nmap <leader>ss :BLines<CR>$/;"	m
+<leader>tT	plugin-settings.vim	/^nmap <leader>tT :Tags<CR>$/;"	m
+<leader>tt	plugin-settings.vim	/^nmap <leader>tt :BTag<CR>$/;"	m
+<leader>w+	default.vim	/^map <leader>w+ <c-w>+$/;"	m
+<leader>w-	default.vim	/^map <leader>w- <c-w>-$/;"	m
+<leader>w=	default.vim	/^map <leader>w= <c-w>=$/;"	m
+<leader>wh	default.vim	/^map <leader>wh <c-w>h$/;"	m
+<leader>wj	default.vim	/^map <leader>wj <c-w>j$/;"	m
+<leader>wk	default.vim	/^map <leader>wk <c-w>k$/;"	m
+<leader>wl	default.vim	/^map <leader>wl <c-w>l$/;"	m
+<localleader>	which-key.vim	/^nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>$/;"	m
+E	default.vim	/^nnoremap E \$$/;"	m
+Fold	coc.vim	/^command! -nargs=? Fold :call     CocAction('fold', <f-args>)$/;"	c
+Format	coc.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
+GGrep	plugin-settings.vim	/^command! -bang -nargs=* GGrep$/;"	c
+NERDTreeDirArrowCollapsible	plugin-settings.vim	/^let NERDTreeDirArrowCollapsible = "▼"$/;"	v
+NERDTreeDirArrowExpandable	plugin-settings.vim	/^let NERDTreeDirArrowExpandable = "►"$/;"	v
+NERDTreeIngore	plugin-settings.vim	/^let NERDTreeIngore = ['\\.pyc$', '\\.pyo$']$/;"	v
+NERDTreeRefresh	plugin-settings.vim	/^function! NERDTreeRefresh()$/;"	f
+NERDTreeShowLineNumbers	plugin-settings.vim	/^let NERDTreeShowLineNumbers = 1$/;"	v
+OR	coc.vim	/^command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')$/;"	c
+PRUN	default.vim	/^func! PRUN()$/;"	f
+SetupCommandAbbrs	coc.vim	/^function! SetupCommandAbbrs(from, to)$/;"	f
+^	default.vim	/^nnoremap ^ <nop>$/;"	m
+af	coc.vim	/^omap af <Plug>(coc-funcobj-a)$/;"	m
+b:SimpylFold_fold_docstring	plugin-settings.vim	/^let b:SimpylFold_fold_docstring = 1$/;"	v
+b:SimpylFold_fold_import	plugin-settings.vim	/^let b:SimpylFold_fold_import = 1$/;"	v
+check_back_space	coc.vim	/^function! s:check_back_space() abort$/;"	f
+configgroup	default.vim	/^augroup configgroup$/;"	a
+g:SimpylFold_docstring_preview	plugin-settings.vim	/^let g:SimpylFold_docstring_preview = 1$/;"	v
+g:SimpylFold_fold_docstring	plugin-settings.vim	/^let g:SimpylFold_fold_docstring = 1$/;"	v
+g:SimpylFold_fold_import	plugin-settings.vim	/^let g:SimpylFold_fold_import = 1$/;"	v
+g:coc_global_extensions	coc.vim	/^let g:coc_global_extensions = [$/;"	v
+g:lightline	plugin-settings.vim	/^let g:lightline = {$/;"	v
+g:mapleader	plugin-settings.vim	/^let g:mapleader = "\\<Space>"$/;"	v
+g:maplocalleader	plugin-settings.vim	/^let g:maplocalleader = ','$/;"	v
+g:netrw_banner	default.vim	/^let g:netrw_banner=0$/;"	v
+g:netrw_liststyle	default.vim	/^let g:netrw_liststyle=3$/;"	v
+g:netrw_winsize	default.vim	/^let g:netrw_winsize=25$/;"	v
+g:pymode_doc_bind	pymode.vim	/^let g:pymode_doc_bind = ',k'$/;"	v
+g:pymode_options_max_line_length	pymode.vim	/^let g:pymode_options_max_line_length = 100$/;"	v
+g:pymode_rope	pymode.vim	/^let g:pymode_rope = 0$/;"	v
+g:pymode_rope_goto_definition_bind	pymode.vim	/^let g:pymode_rope_goto_definition_bind = ',g'$/;"	v
+g:pymode_rope_organize_imports_bind	pymode.vim	/^let g:pymode_rope_organize_imports_bind = '<C-i>'$/;"	v
+g:pymode_rope_show_doc_bind	pymode.vim	/^let g:pymode_rope_show_doc_bind = ',c'$/;"	v
+g:pymode_syntax	pymode.vim	/^let g:pymode_syntax = 1$/;"	v
+g:pymode_syntax_print_as_function	pymode.vim	/^let g:pymode_syntax_print_as_function = 1$/;"	v
+g:rainbow_active	plugin-settings.vim	/^let g:rainbow_active=1$/;"	v
+g:repl_cursor_down	repl.vim	/^let g:repl_cursor_down = 1$/;"	v
+g:repl_ipython_version	repl.vim	/^let g:repl_ipython_version = '7'$/;"	v
+g:repl_position	repl.vim	/^let g:repl_position = 3$/;"	v
+g:repl_predefine_python	repl.vim	/^let g:repl_predefine_python = {$/;"	v
+g:repl_program	repl.vim	/^let g:repl_program = {$/;"	v
+g:repl_python_automerge	repl.vim	/^let g:repl_python_automerge = 1$/;"	v
+g:sendtorepl_invoke_key	repl.vim	/^let g:sendtorepl_invoke_key = "<leader>p"$/;"	v
+g:signify_vcs_list	plugin-settings.vim	/^let g:signify_vcs_list = ['git', 'hg']$/;"	v
+g:tagbar_autofocus	plugin-settings.vim	/^let g:tagbar_autofocus=1$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map = {}$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.a = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.b = { 'name': 'buffers' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.c = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.d = { 'name': 'document' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.f = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.g = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.h = { 'name': '+helps' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.i = { 'name': 'REPLToggle' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.k = ['Maps', 'KeySettings']$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.p = { 'name': 'send_to_repl' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.r = { 'name': 'rename' }$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.s = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.t = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map.w = {$/;"	v
+g:which_key_map	which-key.vim	/^let g:which_key_map['?'] = [':vsp $MYVIMRC', 'vimrc']$/;"	v
+gj	default.vim	/^nnoremap gj j$/;"	m
+gk	default.vim	/^nnoremap gk k$/;"	m
+if	coc.vim	/^omap if <Plug>(coc-funcobj-i)$/;"	m
+j	default.vim	/^nnoremap j gj$/;"	m
+jk	default.vim	/^inoremap jk <ESC>$/;"	m
+k	default.vim	/^nnoremap k gk$/;"	m
+mapleader	default.vim	/^let mapleader=" "$/;"	v
+md	default.vim	/^augroup md$/;"	a
+mygroup	coc.vim	/^augroup mygroup$/;"	a
+plug_begin	plug.vim	/^let plug_begin = expand(vim_config_root_path) . 'plugged'$/;"	v
+show_documentation	coc.vim	/^function! s:show_documentation()$/;"	f
+using_neovim	plug.vim	/^let using_neovim = has('nvim')$/;"	v
+vim_config_root_path	plug.vim	/^    let vim_config_root_path = '~\/.config\/nvim\/'$/;"	v
+vim_config_root_path	plug.vim	/^    let vim_config_root_path = '~\/.vim\/'$/;"	v
+vim_plug_need_install	plug.vim	/^    let vim_plug_need_install = 1$/;"	v
+vim_plug_need_install	plug.vim	/^let vim_plug_need_install = 0$/;"	v
+vim_plug_path	plug.vim	/^let vim_plug_path = expand(vim_config_root_path) . 'autoload\/plug.vim'$/;"	v
+zz	default.vim	/^nnoremap zz :q!<CR>$/;"	m

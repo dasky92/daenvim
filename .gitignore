@@ -1,3 +1,6 @@
 .netrwhist
 # plugins installed
 plugged/*
+vimpack/*
+pack/*
+*.un~

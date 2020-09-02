@@ -7,7 +7,7 @@
             "filetypes": ["go"]
         },
         "python": {
-            "enable": false,
+            "enable": true,
             "filetypes": ["py"],
             "module": ""
         }

@@ -1,14 +1,15 @@
+" 
+set novisualbell
+" ===== Shortcut =====
+" {{{
+" i → Insert mode. Type ESC to return to Normal mode.
+" x → Delete the char under the cursor
+" :wq → Save and Quit (:w save, :q quit)
+" dd → Delete (and copy) the current line
+" p → Paste
 " NO Plugins used here
-
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-" set fileencodings=ucs-bom,utf-8,chinese,cp936
-
-" which_key_map already set leader, so comment here
-" If use this file as vimrc, nocomment next line please
-"let mapleader=" "
-
+" }}}
+"
 " ===== Colors =====
 " no vi-compatible
 set nocompatible
@@ -20,19 +21,27 @@ set noswapfile
 set autochdir
 
 
+" ===== Leader key =====
+" leader is comma
+let mapleader=" "
 " quick into command mode
 nnoremap ; :
 
 " ===== UI Config =====
 " show command in bottom bar
 set number
+" Be convinent for vim command
 set relativenumber
 " show command in botton bar
 set showcmd
 " highlight current line
 set cursorline
+" highlight current column
+" set cursorcolumn
 " hightlight column maxsize flag
-set colorcolumn=80,100,120
+set colorcolumn=100
+" set code warning column
+highlight ColorColumn ctermbg=6
 " softbreak
 set linebreak
 " visual autocomplete for command menu
@@ -63,15 +72,12 @@ set scrolloff=3
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
 set wildmode=list:longest,full
-" IMPORTANT PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
 
 " hide toolbar and menu
 set guioptions-=T
 set guioptions-=m
 " not show startup suomali
 set shortmess=atI
-set shortmess+=c
 " not ring
 set noerrorbells
 set novisualbell
@@ -100,7 +106,7 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 " save undo history even though close vim
 set undofile
-" cursor in last left when you in the file.
+" cursor in last left when you open the file.
 autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal`\"" | endif
 
 
@@ -123,9 +129,7 @@ nnoremap gj j
 nnoremap gk k
 " jk is escape, <ESC> is very far away. jk is a much better.
 inoremap jk <ESC>
-inoremap <c-c> <ESC>
-" Change 'exit terminal command' to general
-"tnoremap <c-c> <C-\><C-n>
+
 " move to beginning/end of line
 " 0 == ^
 "nnoremap B ^
@@ -134,47 +138,48 @@ nnoremap E $
 " $/^ doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
-nnoremap zz :wq!<CR>
-"nnoremap <leader>w :w!<CR>
+nnoremap zz :q!<CR>
+nnoremap <leader>s :w!<CR>
 
 " ===== Shortcut =====
-" tab navigation mappings
-map tn :tabn<CR>
-map tp :tabp<CR>
-"map tm :tabm
-map tt :tabnew
-map tc :tabclose<CR>
-map ts :tab split<CR>
+" :tabn     :tabnext    -> tab next
+" :tabp     :tabprev    -> tab previous
+" :tabnew               -> tab new
+" :tabonly              -> tab only open
+" :tabclose             -> tab close
+" :tabs                 -> tab list
+" :tab(number)          -> tab number
+" gt                    -> tab next
+" gT                    -> tab previous
 
 " ===== Buffer =====
-" these keymap could slow `b` motion
-" buffer next
-map bn :bn<CR>
-" buffer previous
-map bp :bp<CR>
-" buffer delete
-map bd :bd<CR>
-" :b1 -> buffer 1
-" b2,b3,..., and so on.
+" :ls   :buffers    -> buffer list
+" :bn               -> buffer next
+" :bp               -> buffer previous
+" :b(num)           -> buffer number
+" :ba   :badd       -> buffer add file
+" :bdelete          -> buffer delete
 
 
-" navigate windows with meta+arrows
-map <M-Right> <c-w>l
-map <M-Left> <c-w>h
-map <M-Up> <c-w>k
-map <M-Down> <c-w>j
-
-imap <M-Right> <ESC><c-w>l
-imap <M-Left> <ESC><c-w>h
-imap <M-Up> <ESC><c-w>k
-imap <M-Down> <ESC><c-w>j
+" navigate windows with "leader + window + direction"
+map <leader>wl <c-w>l
+map <leader>wh <c-w>h
+map <leader>wk <c-w>k
+map <leader>wj <c-w>j
+" ???????
+map <leader>w- <c-w>-
+map <leader>w+ <c-w>+
+map <leader>w= <c-w>=
 
 " save as sudo
 ca w!! w !sudo tee "%"
 
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+" set fileencodings=ucs-bom,utf-8,chinese,cp936
 
 set nobackup
-set nowritebackup
 set autoread
 " share with windows system clipboard
 set clipboard+=unnamed
@@ -182,18 +187,23 @@ set clipboard+=unnamed
 set nopaste
 set ignorecase smartcase
 
+" fix words automaticily
+iabbrev centre center
+iabbrev fro for
+iabbrev fucntion function
+iabbrev recieve receive
+iabbrev recieved received
+iabbrev teh the
+iabbrev hte the
+iabbrev k8s kubernetes
+
 " ============== AutoGroups ===============
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
     " clear empty spaces at the end of lines on save of python files
     autocmd BufWritePre *.py :%s/\s\+$//e
-    autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType ruby setlocal commentstring=#\ %s
     autocmd FileType python setlocal commentstring=#\ %s
-    autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd BufEnter *.sh setlocal tabstop=2
@@ -201,21 +211,14 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal softtabstop=2
 augroup END
 
-autocmd FileType vim setlocal foldmethod=marker
-
 augroup md
   autocmd!
-  " highlight key word
-  au Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
-  "au Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
   au BufNewFile,BufRead *.md syntax keyword todo TODO FIX
-  " get correct comment highlight for json file
-  au FileType json syntax match Comment +\/\/.\+$+
   au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
 augroup END
 
 
-set pastetoggle=<F9>
+set pastetoggle=<F10>
 
 " remove ugly vertical lines on window division
 set fillchars+=vert:\
@@ -228,18 +231,8 @@ func! PRUN()
         exec "!python3 %"
     endif
 endfunc
+" statusline
+" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+" nnoremap <leader>vv :vsp $MYVIMRC<CR>
+" :source $MYVIMRC      -> apply current vimrc configuration
 
-" change file mode between ReadWrite and ReadOnly
-function! ChangeReadOnly()
-    if(&readonly == 1)
-        set noreadonly
-    else
-        set readonly
-    endif
-endfunc
-nnoremap <leader>fr :call ChangeReadOnly()<cr>
-
-" Ctrl-j,Ctrl-k to select the popup menu:
-"inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
-"inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
-nnoremap <silent> <leader>? :vsp $MYVIMRC<CR>

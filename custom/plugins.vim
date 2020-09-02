@@ -12,6 +12,7 @@ Plug 'mhinz/vim-signify'
 Plug 'itchyny/lightline.vim'
 " show indent lines
 Plug 'valloric/vim-indent-guides'
+Plug 'yggdroot/indentline'
 " Directory Manager
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
@@ -19,9 +20,12 @@ Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 " colorscheme theme
 Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
+Plug 'tomasr/molokai'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
+Plug 'mbbill/undotree'
+" better move
+Plug 'easymotion/vim-easymotion'
 " `.` repeat extend
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
@@ -30,18 +34,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " fold
 Plug 'tmhedberg/SimpylFold'
-" Give snippets, and for coc-snippets
-Plug 'honza/vim-snippets'
-" Coc.nvim for language completaion with lsp, It can load plugins
-" ================== Language Related =================
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" together coc-go with vim-go will work on well
+" Snippets for different language
+Plug 'sirver/ultisnips'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " language code repl
 Plug 'sillybun/vim-repl' 
 
 " Load when you need
 Plug 'liuchengxu/vim-which-key'
+" Have error.
 "Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 

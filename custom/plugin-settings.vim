@@ -6,6 +6,37 @@ let g:maplocalleader = ','
 "let g:python_host_prog = '/usr/bin/python'
 "let g:python3_host_prog = '/usr/bin/python3'
 
+
+
+"  =============== YouCompleteMe =============== 
+nnoremap <leader>gf :YcmCompleter FixIt<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gh :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+" disable nover doc show
+let g:ycm_auto_hover = ''
+" enable in comments
+let g:ycm_complete_in_comments = 1
+let g:ycm_filetype_whitelist = {
+            \ 'c': 1,
+            \ 'cpp': 1,
+            \ 'python': 1,
+            \ 'go': 1,
+            \ 'vim': 1,
+            \ 'sh': 1,
+            \ 'zsh': 1,
+            \ }
+" Jump new window when file is not open.
+let g:ycm_goto_buffer_command = 'split-or-existing-window'
+" 给出上下文中出现的符号,Mac,Windows冲突
+let g:ycm_key_invoke_completion = '<C-Z>'
+" cursor in foo, following command will: rename foo -> bar
+" >> :YcmCompleter RefactorRename bar
+
+" errors
+nnoremap <leader>gl :YcmDiags<CR>
+
 "  =============== vim-rainbow =============== 
 let g:rainbow_active=1
 
@@ -18,12 +49,11 @@ let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right':[ ['fileformat', 'fileencoding' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'cocstatus': 'coc#status',
       \ },
       \ 'component':{
       \ },
@@ -91,7 +121,7 @@ nmap <leader>fg :GGrep<CR>
 nmap <leader>tt :BTag<CR>
 " tags (symbols) in all files finder mapping
 nmap <leader>tT :Tags<CR>
-" general code finder in current file mapping
+
 nmap <leader>ss :BLines<CR>
 " general code finder in all files mapping
 nmap <leader>sS :Lines<CR>
@@ -148,7 +178,6 @@ let b:SimpylFold_fold_import = 1
 " ds{ds) ->  hello world
 " ysiw<em> -> <em>hello</em> world
 
-
 " vim-Surround ========================================
 " :1,2Commentary -> 1line-2line
 " gcc -> comment the line
@@ -156,4 +185,43 @@ let b:SimpylFold_fold_import = 1
 " :g/TODO/Commentary ?
 " TODO: ctrl+/ shortcut setting
 
+
+" indentlint ========================================
+" Enable indentline, default disabled
+let g:indentLine_enabled = 1
+let g:indentLine_setColors = 0
+" Customize conceal color
+" Vim
+let g:indentLine_color_term = 239
+
+" GVim
+let g:indentLine_color_gui = '#A4E57E'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+" Background (Vim, GVim)
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#FF5F00'
+" indentline visual character
+let g:indentLine_char = '┊'
+
+
+" easymotion ========================================
+"
+map <Leader>m <Plug>(easymotion-prefix)
+" <prefix>-w    :   move to word
+" <prefix>-l    :   move to line
+" <prefix>-f{char}  :   move to {char}
+
+
+" easymotion ========================================
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 " }}}

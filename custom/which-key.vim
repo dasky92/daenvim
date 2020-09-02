@@ -20,6 +20,9 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:which_key_map = {}
 
 let g:which_key_map['?'] = [':vsp $MYVIMRC', 'vimrc']
+" gcc provided by vim-surround
+" shortcut for comment a line
+let g:which_key_map['/'] = ['gcc']
 
 let g:which_key_map.a = {
             \ 'name': 'align',
@@ -31,17 +34,7 @@ nnoremap <leader>b :Buffers<CR>
 let g:which_key_map.b = { 'name': 'buffers' }
 
 let g:which_key_map.c = {
-            \ 'name': '+CocList/commands',
-            \ 'c':    'coc-commands',
-            \ 'd':    'coc-diagnostic',
-            \ 'e':    'coc-extensions',
-            \ 'n':    'coc-next',
-            \ 'o':    'coc-outline',
-            \ 'p':    'coc-prev',
-            \ 's':    'coc-snippets',
-            \ 'r':    'cocListResume',
-            \ 't':    'coc-symbols',
-            \ 'y':    'coc-yankList',
+            \ 'name': 'NUll',
             \ }
 
 let g:which_key_map.d = { 'name': 'document' }
@@ -59,10 +52,10 @@ let g:which_key_map.i = { 'name': 'REPLToggle' }
 let g:which_key_map.g = {
             \ 'name': '+gotos',
             \ 'd':    'definition',
-            \ 'j':    'diagnostic-next',
-            \ 'k':    'diagnostic-prev',
-            \ 'y':    'type-definition',
-            \ 'i':    'implementation',
+            \ 'f':    'fix it',
+            \ 'h':    'declaration',
+            \ 'l':    'diagnostic',
+            \ 't':    'goto any',
             \ 'r':    'reference',
             \ }
 
@@ -75,6 +68,7 @@ let g:which_key_map.p = { 'name': 'send_to_repl' }
 
 let g:which_key_map.r = { 'name': 'rename' }
 
+" Conflict with leader-s
 " TODO: fzf search git files
 let g:which_key_map.s = {
             \ 'name': '+search',
