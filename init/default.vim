@@ -224,15 +224,13 @@ set pastetoggle=<F10>
 set fillchars+=vert:\
 
 " run python by F5
-map <F5> :call PRUN()<CR>
+
 func! PRUN()
     exec "w"
     if &filetype == 'python'
         exec "!python3 %"
+    elseif &filetype == 'go'
+        exec "GoRun"
     endif
 endfunc
-" statusline
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-" nnoremap <leader>vv :vsp $MYVIMRC<CR>
-" :source $MYVIMRC      -> apply current vimrc configuration
 

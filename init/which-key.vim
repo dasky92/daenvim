@@ -2,8 +2,6 @@
 " which_key_map
 set timeoutlen=500
 " leader key locate after plugins.
-"let g:mapleader = "\<Space>"
-"let g:maplocalleader = ','
 " load when needed
 "autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 call which_key#register('<Space>', 'g:which_key_map')
@@ -66,7 +64,7 @@ let g:which_key_map.k = ['Maps', 'KeySettings']
 " conque-shell
 let g:which_key_map.p = { 'name': 'send_to_repl' }
 
-let g:which_key_map.r = { 'name': 'rename' }
+let g:which_key_map.r = { 'name': 'Run' }
 
 " Conflict with leader-s
 " TODO: fzf search git files
@@ -103,5 +101,5 @@ let g:which_key_map.w = {
       \ '=' : ['<C-w>='     , 'balance-window']        ,
       \ 's' : ['<C-w>s'     , 'split-window-below']    ,
       \ 'v' : ['<C-w>v'     , 'split-window-below']    ,
-      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ 'w' : ['Windows'    , 'fzf-window']            ,
       \ }
