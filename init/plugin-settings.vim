@@ -9,15 +9,22 @@ let g:maplocalleader = ','
 
 
 "  =============== YouCompleteMe =============== 
-nnoremap <leader>gf :YcmCompleter FixIt<CR>
+" nnoremap <leader>gf :YcmCompleter FixIt<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gh :YcmCompleter GoToDeclaration<CR>
+
+" default: 1, if not clangd, will use libclang
+let g:ycm_use_clangd = 1
+" default: 1
+let g:ycm_use_ultisnips_completer = 1
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+let g:ycm_global_ycm_extra_conf = ''
 " disable nover doc show
 let g:ycm_auto_hover = ''
 " enable in comments
 let g:ycm_complete_in_comments = 1
+" Collect from comments
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_filetype_whitelist = {
             \ 'c': 1,
             \ 'cpp': 1,
@@ -27,15 +34,69 @@ let g:ycm_filetype_whitelist = {
             \ 'sh': 1,
             \ 'zsh': 1,
             \ }
+
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar': 1,
+      \ 'notes': 1,
+      \ 'markdown': 1,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1
+      \}
+let g:ycm_filepath_blacklist = {
+      \ 'html': 1,
+      \ 'jsx': 1,
+      \ 'xml': 1,
+      \}
+
 " Jump new window when file is not open.
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 " 给出上下文中出现的符号,Mac,Windows冲突
 let g:ycm_key_invoke_completion = '<C-Z>'
 " cursor in foo, following command will: rename foo -> bar
 " >> :YcmCompleter RefactorRename bar
-
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>'
 " errors
 nnoremap <leader>gl :YcmDiags<CR>
+
+
+"  =============== vim-flake8 =============== 
+"  flake8 installation location
+"let g:flake8_cmd="/usr/local/lib/python3.8/site-packages/flake8"
+let g:flake8_quickfix_location="topleft"
+" default: 1
+let g:flake8_show_quickfix=1
+" default: 0
+let g:flake8_show_in_gutter=1
+" default: 0
+let g:flake8_show_in_file=1
+" default: 500
+let g:flake8_max_markers=500
+" lint the file
+autocmd FileType python map <buffer> <leader>l :call flake8#Flake8()<CR>
+" Show current line error
+nnoremap <leader>L :call flake8#Flake8ShowError()<cr>
+" lint when run python script
+autocmd BufWritePost *.py call flake8#Flake8()
+
+let g:flake8_error_marker='EE'     " set error marker to 'EE'
+let g:flake8_warning_marker='WW'   " set warning marker to 'WW'
+let g:flake8_pyflake_marker=''     " disable PyFlakes warnings
+let g:flake8_complexity_marker=''  " disable McCabe complexity warnings
+let g:flake8_naming_marker=''      " disable naming warnings
+
+" to use colors defined in the colorscheme
+highlight link Flake8_Error      Error
+highlight link Flake8_Warning    WarningMsg
+highlight link Flake8_Complexity WarningMsg
+highlight link Flake8_Naming     WarningMsg
+highlight link Flake8_PyFlake    WarningMsg
 
 "  =============== vim-rainbow =============== 
 let g:rainbow_active=1
@@ -61,14 +122,14 @@ let g:lightline = {
 
 " Tagbar ------------------
 "toggle tagbar display
-map <F4> :TagbarToggle<CR>
+map <leader>T :TagbarToggle<CR>
 " autofocus on tagbar open
 let g:tagbar_autofocus=1
 
 " NERDTree ----------------
 
 " toggle nerdtree display
-map <F2> :NERDTreeToggle<CR>
+map <leader>D :NERDTreeToggle<CR>
 " don;t show these file types
 let NERDTreeIngore = ['\.pyc$', '\.pyo$']
 let NERDTreeShowLineNumbers = 1
@@ -218,7 +279,7 @@ map <Leader>m <Plug>(easymotion-prefix)
 
 " easymotion ========================================
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 

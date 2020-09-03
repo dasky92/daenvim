@@ -35,7 +35,9 @@ let g:which_key_map.c = {
             \ 'name': 'NUll',
             \ }
 
+" YouCompleteMe show detail diagnostic
 let g:which_key_map.d = { 'name': 'document' }
+let g:which_key_map.D = { 'name': 'NERDTree' }
 let g:which_key_map.f = {
             \ 'name': '+Files/format',
             \ 'f':    "git-files",
@@ -47,10 +49,10 @@ let g:which_key_map.f = {
 
 let g:which_key_map.i = { 'name': 'REPLToggle' }
 
+" Reference to YouCompleteMe
 let g:which_key_map.g = {
             \ 'name': '+gotos',
             \ 'd':    'definition',
-            \ 'f':    'fix it',
             \ 'h':    'declaration',
             \ 'l':    'diagnostic',
             \ 't':    'goto any',
@@ -82,6 +84,7 @@ let g:which_key_map.t = {
     \ 'T':    'all-files-tags',
     \ }
 
+let g:which_key_map.T = { 'name' : 'TagBar' }
 
 let g:which_key_map.w = {
       \ 'name' : '+windows/write' ,

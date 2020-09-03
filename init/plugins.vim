@@ -48,6 +48,9 @@ Plug 'sillybun/vim-repl'
 Plug 'liuchengxu/vim-which-key'
 " Have error.
 "Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+" =============== language ==============
+Plug 'nvie/vim-flake8'
 call plug#end()
 
 if vim_plug_need_install

@@ -34,6 +34,7 @@ set number
 set relativenumber
 " show command in botton bar
 set showcmd
+" set showtabline=1
 " highlight current line
 set cursorline
 " highlight current column
@@ -215,6 +216,7 @@ augroup md
   autocmd!
   au BufNewFile,BufRead *.md syntax keyword todo TODO FIX
   au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
+  au BufNewFile,BufRead *.gohtml set filetype=gohtmltmpl
 augroup END
 
 

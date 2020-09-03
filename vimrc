@@ -17,3 +17,6 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/which-key.vim'
 " ================ often commands
 " gf , c-w-f : 跳转文件
 " c-o        : 跳转返回
+" ctrl + d   : 内置terminal返回vim
+" ]]         : next function
+" [[         : prev function
