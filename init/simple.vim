@@ -16,7 +16,6 @@ set nocompatible
 " syntax highlight on
 syntax on
 filetype plugin indent on
-set noswapfile
 " auto change work directory
 set autochdir
 
@@ -105,11 +104,14 @@ set autoindent
 " let backspace can delete
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-" save undo history even though close vim
-set undofile
 " cursor in last left when you open the file.
 autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal`\"" | endif
 
+" save undo history even though close vim
+set undofile
+set noswapfile
+set nobackup
+" set undodir=~/.undodir
 
 " ===== Spaces & Tabs =====
 set expandtab
@@ -142,6 +144,10 @@ nnoremap ^ <nop>
 nnoremap zz :q!<CR>
 nnoremap <leader>s :w!<CR>
 
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
 " ===== Shortcut =====
 " :tabn     :tabnext    -> tab next
 " :tabp     :tabprev    -> tab previous
@@ -163,14 +169,14 @@ nnoremap <leader>s :w!<CR>
 
 
 " navigate windows with "leader + window + direction"
-map <leader>wl <c-w>l
-map <leader>wh <c-w>h
-map <leader>wk <c-w>k
-map <leader>wj <c-w>j
-" ???????
-map <leader>w- <c-w>-
-map <leader>w+ <c-w>+
-map <leader>w= <c-w>=
+" map <leader>wl <c-w>l
+" map <leader>wh <c-w>h
+" map <leader>wk <c-w>k
+" map <leader>wj <c-w>j
+" " ???????
+" map <leader>w- <c-w>-
+" map <leader>w+ <c-w>+
+" map <leader>w= <c-w>=
 
 " save as sudo
 ca w!! w !sudo tee "%"
@@ -180,23 +186,12 @@ set termencoding=utf-8
 set fileencoding=utf-8
 " set fileencodings=ucs-bom,utf-8,chinese,cp936
 
-set nobackup
 set autoread
 " share with windows system clipboard
 set clipboard+=unnamed
 " paste not busy
 set nopaste
 set ignorecase smartcase
-
-" fix words automaticily
-iabbrev centre center
-iabbrev fro for
-iabbrev fucntion function
-iabbrev recieve receive
-iabbrev recieved received
-iabbrev teh the
-iabbrev hte the
-iabbrev k8s kubernetes
 
 " ============== AutoGroups ===============
 augroup configgroup
@@ -226,6 +221,7 @@ set pastetoggle=<F10>
 set fillchars+=vert:\
 
 " run python by F5
+nnoremap <leader>r :call PRUN()<CR>
 
 func! PRUN()
     exec "w"

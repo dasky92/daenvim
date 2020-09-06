@@ -22,36 +22,49 @@ let g:which_key_map['?'] = [':vsp $MYVIMRC', 'vimrc']
 " shortcut for comment a line
 let g:which_key_map['/'] = ['gcc']
 
+" ???
 let g:which_key_map.a = {
             \ 'name': 'align',
             \ 'a':    ['<Plug>(EasyAlign)', 'eash-align'],
             \ }
 
 " fzf-buffers
-nnoremap <leader>b :Buffers<CR>
-let g:which_key_map.b = { 'name': 'buffers' }
+let g:which_key_map.b = { 'name': 'Buffers' }
 
-let g:which_key_map.c = {
-            \ 'name': 'NUll',
-            \ }
+" let g:which_key_map.c = {
+"             \ 'name': 'NUll',
+"             \ }
 
 " YouCompleteMe show detail diagnostic
-let g:which_key_map.d = { 'name': 'document' }
-let g:which_key_map.D = { 'name': 'NERDTree' }
+let g:which_key_map.d = { 'name': 'YcmErrDetail' }
+let g:which_key_map.D = { 'name': 'NERDTreeToggle' }
+let g:which_key_map.e = {
+    \ 'name': '+ErrorMove',
+    \ 'j':    'signify-next',
+    \ 'k':    'signify-prec',
+    \ }
+
 let g:which_key_map.f = {
             \ 'name': '+Files/format',
-            \ 'f':    "git-files",
-            \ 'g':    "git-file-lines",
-            \ 'm':    'format-selection',
-            \ 'r':    'readonly-mode',
-            \ 'x':    'fix-current-line',
+            \ 'f':    "LeaderF",
+            \ 'a':    "Gtags--append",
+            \ 'b':    "Buffer-Current",
+            \ 'B':    'Buffer-All',
+            \ 'd':    'Gtags-d',
+            \ 'o':    'Gtags--recall',
+            \ 'n':    'Gtags--next',
+            \ 'p':    'Gtags--previous',
+            \ 'r':    'Gtags-r',
+            \ 'R':    'Rg--recall',
+            \ 's':    'Rg--C++',
             \ }
 
-let g:which_key_map.i = { 'name': 'REPLToggle' }
+" let g:which_key_map.i = { 'name': 'REPLToggle' }
 
-" Reference to YouCompleteMe
+" Reference to YouCompleteMe for common c,cpp,py,go,(java,js,ts,etc)
+" And vim-go shorcut (just for go)
 let g:which_key_map.g = {
-            \ 'name': '+gotos',
+            \ 'name': '+Gotos',
             \ 'd':    'definition',
             \ 'h':    'declaration',
             \ 'l':    'diagnostic',
@@ -59,36 +72,35 @@ let g:which_key_map.g = {
             \ 'r':    'reference',
             \ }
 
-let g:which_key_map.h = { 'name': '+helps' }
+"let g:which_key_map.h = { 'name': '+helps' }
 
-let g:which_key_map.k = ['Maps', 'KeySettings']
+"let g:which_key_map.k = ['Maps', 'KeySettings']
 
-" conque-shell
-let g:which_key_map.p = { 'name': 'send_to_repl' }
+let g:which_key_map.l = {'name': 'Flake8Lint'}
+" Show current line falke8 error msg
+let g:which_key_map.L = {'name': 'ShowPyLintErr'}
+
+let g:which_key_map.m = {'name': 'MRU'}
+
+let g:which_key_map.p = { 'name': 'MarkdownPreview' }
+let g:which_key_map.P = { 'name': 'MarkdownStop' }
 
 let g:which_key_map.r = { 'name': 'Run' }
 
-" Conflict with leader-s
-" TODO: fzf search git files
 let g:which_key_map.s = {
-    \ 'name': '+search',
-    \ 's':    'search-current-file',
-    \ 'S':    'search-all-open-files',
-    \ 'j':    'signify-next',
-    \ 'k':    'signify-prec',
+    \ 'name': 'Save',
     \ }
 
+" leave for py.test???
 let g:which_key_map.t = {
-    \ 'name': '+tags',
-    \ 't':    'buffer-tags',
-    \ 'T':    'all-files-tags',
+    \ 'name': '+Tags|Symbols',
     \ }
 
-let g:which_key_map.T = { 'name' : 'TagBar' }
+" let g:which_key_map.T = { 'name' : 'Symbols' }
 
 let g:which_key_map.w = {
-      \ 'name' : '+windows/write' ,
-      \ 'o' : ['<c-w>w'     , 'other-window']          ,
+      \ 'name' : '+Windows' ,
+      \ 'o' : ['<C-w>w'     , 'other-window']          ,
       \ 'd' : ['<C-w>c'     , 'delete-window']         ,
       \ '-' : ['<C-w>s'     , 'split-window-below']    ,
       \ '|' : ['<C-w>v'     , 'split-window-right']    ,

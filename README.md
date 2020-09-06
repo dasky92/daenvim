@@ -2,6 +2,7 @@
 
 This is a neovim configuration for (main)python and go.
 
+
 ## Install
 
 ### Requirements(required by pymode)
@@ -33,22 +34,40 @@ YOU CAN INSTALL IT WITH:
 
 ### common plugins
 
-- fzf
-- nerdtree
-- nerdcommenter
-- vim-snippets
-- lightline.vim
-- vim-rainbow
-- tagbar
-- vim-autoclose
-- colorizer
-- vim-signify
-- emmet-vim
 - SimpylFold
+- fzf
+- fzf.vim
+- gruvbox
+- indentline
+- lightline.vim
+- markdown-preview.nvim: 
+- molokai
+- nerdtree
+- tagbar
+- ultisnips
+- undotree
+- vim-autoclose
+- vim-commentary
+- vim-easy-align
+- vim-easymotion
+- vim-flake8
+- vim-fugitive
+- vim-go
+- vim-indent-guides
+- vim-markdown-toc
+- vim-rainbow
+- vim-repeat
+- vim-repl
+- vim-signify
+- vim-snippets
+- vim-startify
+- vim-surround
+- vim-which-key
+
 
 ### autocomplete
 
-- coc.nvim for different program language
+- YouCompleteMe
 
 ### go plugins
 
@@ -57,17 +76,5 @@ YOU CAN INSTALL IT WITH:
 ### themes
 
 - gruvbox
+- molokai
 
-## Thanks
-
-> When finish my neovim settings, I used the following configuration for
-reference, and THANKS
-
-- [fisadev](http://github.com/fisadev/fisa-vim-config)
-- `[vimawesome.com](vimawesome.com)` for plugins
-- [k-vim](https://github.com/wklken/k-vim)
-- [b-vim](https://github.com/nine2/b-vim)
-
-## Congratulations
-
-Just enjoy yourself !

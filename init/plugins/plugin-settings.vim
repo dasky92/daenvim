@@ -72,7 +72,6 @@ nnoremap <leader>gl :YcmDiags<CR>
 let g:flake8_quickfix_location="topleft"
 " default: 1
 let g:flake8_show_quickfix=1
-" default: 0
 let g:flake8_show_in_gutter=1
 " default: 0
 let g:flake8_show_in_file=1
@@ -85,10 +84,10 @@ nnoremap <leader>L :call flake8#Flake8ShowError()<cr>
 " lint when run python script
 autocmd BufWritePost *.py call flake8#Flake8()
 
-let g:flake8_error_marker='EE'     " set error marker to 'EE'
-let g:flake8_warning_marker='WW'   " set warning marker to 'WW'
+let g:flake8_error_marker='>>'     " set error marker to '>>'
+let g:flake8_warning_marker='>'   " set warning marker to '>'
 let g:flake8_pyflake_marker=''     " disable PyFlakes warnings
-let g:flake8_complexity_marker=''  " disable McCabe complexity warnings
+let g:flake8_complexity_marker='@'  " McCabe complexity warnings to '@'
 let g:flake8_naming_marker=''      " disable naming warnings
 
 " to use colors defined in the colorscheme
@@ -107,7 +106,7 @@ set laststatus=2
 set noshowmode
 " TODO: setting for pylint Warning,Error
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'darculaOriginal',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -153,12 +152,14 @@ autocmd BufEnter * call NERDTreeRefresh()
 
 " Signify --------------------------
 
+" default updatetime 4000ms is not good for async update
+set updatetime=100
 "this first setting decides in which order try to guess your current vcs
 " UPDATE it to reflect your preferences, it will speed up opening files
 let g:signify_vcs_list = ['git', 'hg']
 " mappings to jump to changed blocks
-nmap <leader>sj <plug>(signify-next-hunk)
-nmap <leader>sk <plug>(signify-prev-hunk)
+nmap <leader>ej <plug>(signify-next-hunk)
+nmap <leader>ek <plug>(signify-prev-hunk)
 " nicer colors
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
@@ -176,23 +177,23 @@ command! -bang -nargs=* GGrep
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 "nnoremap <leader>ff :Files<CR>
-nmap <leader>ff :GFiles<CR>
-nmap <leader>fg :GGrep<CR>
+"nmap <leader>ff :GFiles<CR>
+"nmap <leader>fg :GGrep<CR>
 " tags (symbols) in current file finder mapping
-nmap <leader>tt :BTag<CR>
+"nmap <leader>ft :BTag<CR>
 " tags (symbols) in all files finder mapping
-nmap <leader>tT :Tags<CR>
+"nmap <leader>fT :Tags<CR>
 
-nmap <leader>ss :BLines<CR>
+"nmap <leader>fs :BLines<CR>
 " general code finder in all files mapping
-nmap <leader>sS :Lines<CR>
+"nmap <leader>fS :Lines<CR>
 " commands finder mapping
 " TODO: used often???
 "nmap <leader>cc :Commands<CR>
 " vim help
-nmap <leader>h :Helptags<CR>
+"nmap <leader>h :Helptags<CR>
 " key-map-settings
-nmap <leader>k :Maps<CR>
+"nmap <leader>k :Maps<CR>
 " :GFiles [OPTS]       Git files (git ls-files)
 " :GFiles?             git status
 " :Colors              colorschemes
@@ -285,4 +286,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+
+" mardown-preview ===================================
+" p -> start preview, P -> stop preview
+nmap <leader>p <Plug>MarkdownPreview
+nmap <leader>P <Plug>MarkdownPreviewStop
+
 " }}}
