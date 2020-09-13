@@ -22,9 +22,10 @@ let mapleader=" "
  
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-" Require for all jedi Plugins: deoplete-jedi, vim-jedi, ncm2-jedi
-"let g:python_host_prog = '/usr/bin/python'
-"let g:python3_host_prog = '/usr/bin/python3'
+" Require for all jedi Plugins: jedi, maccabe, flake8, pylint
+let g:python_host_prog = 'python'
+" ~/.pyenv/versions/3.8.5/envs/hello/bin/
+let g:python3_host_prog = 'python3'
 " quick into command mode
 nnoremap ; :
 

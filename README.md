@@ -7,13 +7,17 @@ This is a (neo)vim configuration for python and go, maybe include c,cpp.
 
 Install C, C++, Python, Go executable.
 
+```sh
+brew install nodejs go python cmake
+```
+
 ### Install gtags and ripgrep
 
 `brew install global ripgrep`
 
 ### Install YouCompleteMe
 
-Complete for C, C++, Python, Go
+- [Install YouCompleteMe](./doc/install_youcompleteme.md)
 
 ### Install coc.nvim(todo)
 
@@ -36,11 +40,11 @@ Customize leaderF's Keys, rg command.
 
 |      key | say                 |
 |    :---- | :---                |
+| leader-p | commands            |
 |       gd | ycm-goto-definition |
 |       gr | ycm-goto-reference  |
 | leader-f | files               |
 | leader-l | lines               |
-| leader-c | commands            |
 | leader-s | save file           |
 | leader-p | flake8-lint         |
 | leader-P | show flake8 error   |

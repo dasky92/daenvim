@@ -1,6 +1,8 @@
 "  =============== YouCompleteMe =============== 
 "
-
+let g:ycm_global_ycm_extra_conf='../../scripts/global_extra_conf.py'
+" just for ycmd server
+let g:ycm_server_python_interpreter = ''
 " Be Conflict with vim-default-gt-gT.
 "nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap gd :YcmCompleter GoToDefinition<CR>
