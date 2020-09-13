@@ -13,8 +13,9 @@ Plug 'mhinz/vim-signify'
 " light status line different with powerline and airline
 Plug 'itchyny/lightline.vim'
 " show indent lines
-Plug 'valloric/vim-indent-guides'
-Plug 'yggdroot/indentline'
+" not use, because it will slow and show inaccurately.
+" Plug 'valloric/vim-indent-guides'
+" Plug 'yggdroot/indentline'
 " Directory Manager
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
@@ -23,31 +24,26 @@ Plug 'majutsushi/tagbar'
 " colorscheme theme
 Plug 'morhetz/gruvbox'
 Plug 'doums/darcula'
-Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 " better move
 Plug 'easymotion/vim-easymotion'
 " `.` repeat extend
-Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 " Code and files fuzzy finder
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" fold
-Plug 'tmhedberg/SimpylFold'
 " Supply Mechanism for self-defined snippets 
 Plug 'sirver/ultisnips'
 " Predefined snippets
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " language code repl
-Plug 'sillybun/vim-repl' 
+" Plug 'sillybun/vim-repl' 
 " Load when you need
 Plug 'liuchengxu/vim-which-key'
-" Have error.
-"Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 " no prebuild, need for nodejs and yarn
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }

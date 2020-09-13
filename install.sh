@@ -14,7 +14,7 @@ case "$OSTYPE" in
       ;;
 esac
 
-sudo pip install jedi pep8 autopep8 pycodestyle flake8 pyflakes isort mccabe pylint rope pynvim
+sudo pip install flake8 autopep8 pyvim neovim
 
 echo '==============================='
 echo 'start to download vimrc/init.vim file'
@@ -27,8 +27,8 @@ fi
 
 mkdir -p ~/.config/
 cd ~/.config/
-git clone https://github.com/wanchaosoft/daenvim.git nvim
-# pycodestyle软连接到~/.config目录，Required by autopep8, pymode
+git clone https://github.com/dasky92/daenvim.git nvim
+
 ln -s ./nvim/pycodestyle ./pycodestyle
 sudo chown $USER ~/.config/pycodestyle
 

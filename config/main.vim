@@ -1,16 +1,10 @@
-" 
-set novisualbell
-" ===== Shortcut =====
-" {{{
-" i → Insert mode. Type ESC to return to Normal mode.
-" x → Delete the char under the cursor
-" :wq → Save and Quit (:w save, :q quit)
-" dd → Delete (and copy) the current line
-" p → Paste
-" NO Plugins used here
-" }}}
-"
-" ===== Colors =====
+" Better default settings.
+" =================================================================================================
+" =================================================================================================
+" =================================================================================================
+
+" Colors
+" =================================================================================================
 " no vi-compatible
 set nocompatible
 " syntax highlight on
@@ -18,15 +12,24 @@ syntax on
 filetype plugin indent on
 " auto change work directory
 set autochdir
+" no bell
+set novisualbell
 
-
-" ===== Leader key =====
+" Leader Key
+" =================================================================================================
 " leader is comma
 let mapleader=" "
+ 
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+" Require for all jedi Plugins: deoplete-jedi, vim-jedi, ncm2-jedi
+"let g:python_host_prog = '/usr/bin/python'
+"let g:python3_host_prog = '/usr/bin/python3'
 " quick into command mode
 nnoremap ; :
 
-" ===== UI Config =====
+" UI
+" =================================================================================================
 " show command in bottom bar
 set number
 " Be convinent for vim command
@@ -50,11 +53,14 @@ set wildmenu
 set lazyredraw
 set history=100
 
-" ===== Fold =====
+" Fold
+" =================================================================================================
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+
+au BufRead *.vim set foldmethod=marker
 " method: manual/indent/expr/syntax/diff/marker
 set foldlevel=99
 
@@ -97,7 +103,7 @@ let g:netrw_banner=0
 " explore width/editor percent
 let g:netrw_winsize=25
 
-" ===== Edit =====
+" =================================================================================================
 " binary not eight num
 set nrformats-=octal
 set autoindent
@@ -108,12 +114,13 @@ set whichwrap+=<,>,h,l
 autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal`\"" | endif
 
 " save undo history even though close vim
-set undofile
+set noundofile
 set noswapfile
 set nobackup
-" set undodir=~/.undodir
+set undodir=~/.undodir
 
-" ===== Spaces & Tabs =====
+" Space & Tab
+" =================================================================================================
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -124,7 +131,8 @@ autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
-" ===== Movement =====
+" Move
+" =================================================================================================
 " move vertically by visual line, realline <=> visualine
 nnoremap j gj
 nnoremap k gk
@@ -148,7 +156,7 @@ nnoremap <leader>s :w!<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" ===== Shortcut =====
+" =================================================================================================
 " :tabn     :tabnext    -> tab next
 " :tabp     :tabprev    -> tab previous
 " :tabnew               -> tab new
@@ -193,7 +201,8 @@ set clipboard+=unnamed
 set nopaste
 set ignorecase smartcase
 
-" ============== AutoGroups ===============
+" autogroup
+" =================================================================================================
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
@@ -209,7 +218,7 @@ augroup END
 
 augroup md
   autocmd!
-  au BufNewFile,BufRead *.md syntax keyword todo TODO FIX
+  au BufNewFile,BufRead *.md syntax keyword TODO FIXIT NOTE
   au BufNewFile,BufRead *.md inoremap <buffer> ;` ```<cr><cr>```<Up><Up>
   au BufNewFile,BufRead *.gohtml set filetype=gohtmltmpl
 augroup END
@@ -221,7 +230,7 @@ set pastetoggle=<F10>
 set fillchars+=vert:\
 
 " run python by F5
-nnoremap <leader>r :call PRUN()<CR>
+nnoremap <leader>R :call PRUN()<CR>
 
 func! PRUN()
     exec "w"
@@ -231,4 +240,69 @@ func! PRUN()
         exec "GoRun"
     endif
 endfunc
+
+
+" =================================================================================================
+" =================================================================================================
+" =================================================================================================
+" Load Other Vim Scripts
+
+let g:init = ''
+let g:start = (g:init) . '/start'
+let g:plugins = (g:init) . '/plugins'
+let g:after = (g:init) . '/after'
+let g:plug_control =  '/autoload'
+
+" ===> new configuration, need to test
+function! Dot(path)
+    return "~/.vim" . a:path
+endfunction
+
+function! Load(path)
+  for file in split(glob(Dot(a:path . '*.vim')), '\n')
+    execute 'source' file
+  endfor
+endfunction
+
+" Load other settings
+" call Load(g:plug_control)
+" " call Load(g:plugins_installed)
+" call Load(g:init)
+" call Load(g:start)
+" call Load(g:plugins)
+" call Load(g:after)
+
+
+
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/start/plug.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/abbrev.vim'
+
+
+" plugins/
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/colorscheme.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/easymotion.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/flake8.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/fzf.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/leaderF.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/lightline.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/markdown.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/nerdtree.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/pytest.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/rainbow.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/signify.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/surrouond.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/vimgo.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/youcompleteme.vim'
+
+" Not used temporary.
+"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/tagbar.vim'
+"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/simplefold.vim'
+"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/indentline.vim'
+
+" after al plugins
+execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/after/which-key.vim'
+
+
+
 

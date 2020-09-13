@@ -1,80 +1,51 @@
 # Configuration for neovim
 
-This is a neovim configuration for (main)python and go.
+This is a (neo)vim configuration for python and go, maybe include c,cpp.
 
 
 ## Install
 
-### Requirements(required by pymode)
+Install C, C++, Python, Go executable.
 
-> Of Course, you first should install python and go
+### Install gtags and ripgrep
 
-`sudo pip install jedi pyflakes pep8 autopep8 mccabe rope pycodestyle isort yapf
-pylama pylint pynvim`
+`brew install global ripgrep`
 
-### Go and Python
+### Install YouCompleteMe
 
-由于众所周知的原因，你需要先设置pip国内源和go的国内源，百度一大把，这个可以自行解决。
+Complete for C, C++, Python, Go
 
-### Download script and install
+### Install coc.nvim(todo)
 
-`wget https://raw.githubusercontent.com/dasky92/daenvim/master/install.sh && 
-chmod 777 install.sh && ./install.sh`
+Complete for javascript, css, html, typescript, vue, etc.
 
-## Non-Plugins Version
+### Requirements(required by python's completion)
 
-`/custom/default.vim` is like `.vimrc`, no plugins.
-You can wget it and save as .vimrc
+`sudo pip install flake8 pynvim, neovim, autopep8`
 
-YOU CAN INSTALL IT WITH:
+`sudo apt-get install ripgrep, ctags`
 
-`wget https://raw.githubusercontent.com/dasky92/daenvim/master/custom/custom-default.vim  -O .vimrc`
+> Center: YouCompleteMe & leaderF
 
-## Plugins
+### TODO
 
-### common plugins
-
-- SimpylFold
-- fzf
-- fzf.vim
-- gruvbox
-- indentline
-- lightline.vim
-- markdown-preview.nvim: 
-- molokai
-- nerdtree
-- tagbar
-- ultisnips
-- undotree
-- vim-autoclose
-- vim-commentary
-- vim-easy-align
-- vim-easymotion
-- vim-flake8
-- vim-fugitive
-- vim-go
-- vim-indent-guides
-- vim-markdown-toc
-- vim-rainbow
-- vim-repeat
-- vim-repl
-- vim-signify
-- vim-snippets
-- vim-startify
-- vim-surround
-- vim-which-key
+Customize leaderF's Keys, rg command.
 
 
-### autocomplete
+### 快捷键
 
-- YouCompleteMe
-
-### go plugins
-
-- vim-go
-
-### themes
-
-- gruvbox
-- molokai
+|      key | say                 |
+|    :---- | :---                |
+|       gd | ycm-goto-definition |
+|       gr | ycm-goto-reference  |
+| leader-f | files               |
+| leader-l | lines               |
+| leader-c | commands            |
+| leader-s | save file           |
+| leader-p | flake8-lint         |
+| leader-P | show flake8 error   |
+| leader-R | run python/go       |
+| leader-r | recent files        |
+| leader-t | buffer tags         |
+| leader-b | buffers             |
 

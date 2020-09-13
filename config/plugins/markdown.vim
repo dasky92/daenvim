@@ -82,3 +82,14 @@ let g:mkdp_port = '7000'
 " preview page title
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
+
+
+
+" mardown-preview ===================================
+" p -> start preview
+" P -> stop preview
+" This action is not often used, so forbidden it.
+" 
+"nmap <leader>p <Plug>MarkdownPreview
+"nmap <leader>P <Plug>MarkdownPreviewStop
+
