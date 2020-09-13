@@ -19,24 +19,21 @@ brew install nodejs go python cmake
 
 - [Install YouCompleteMe](./doc/install_youcompleteme.md)
 
-### Install coc.nvim(todo)
-
-Complete for javascript, css, html, typescript, vue, etc.
-
 ### Requirements(required by python's completion)
 
 `sudo pip install flake8 pynvim, neovim, autopep8`
 
 `sudo apt-get install ripgrep, ctags`
 
-> Center: YouCompleteMe & leaderF
+> Core: YouCompleteMe & leaderF
 
 ### TODO
 
 Customize leaderF's Keys, rg command.
 
+Complete for javascript, css, html, typescript, vue, etc.
 
-### 快捷键
+### 
 
 |      key | say                 |
 |    :---- | :---                |

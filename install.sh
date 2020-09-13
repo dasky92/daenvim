@@ -4,10 +4,10 @@ echo '==============================='
 echo 'start to install dependences...'
 case "$OSTYPE" in
     darwin*)
-      brew install vim git pip curl
+      brew install gtags ripgrep cmake
       ;;
     linux*)
-      sudo apt-get install vim exuberant-ctags git pip curl
+      sudo apt-get install ripgrep cmake
       ;;
     *)
       echo "unknown: OS: $OSTYPE, U should install dependences by yourself"
@@ -25,16 +25,15 @@ then
   echo 'neovim setting directory already existed, please backup and rename it and try again!'
 fi
 
-mkdir -p ~/.config/
-cd ~/.config/
-git clone https://github.com/dasky92/daenvim.git nvim
+mkdir -p ~/.vim/
+cd ~/.vim/
+git clone https://github.com/dasky92/daenvim.git ~/.vim
 
-ln -s ./nvim/pycodestyle ./pycodestyle
-sudo chown $USER ~/.config/pycodestyle
+#sudo chown $USER ~/.config/pycodestyle
 
 echo '==============================='
 echo 'start to install vim plugins...'
 nvim +PlugClean +PlugInstall! +qa
 
-sudo chown $USER ~/.config/nvim/
-echo 'down! enjoy it!'
+sudo chown $USER ~/.vim
+echo 'Finish! Enjoy It!'
