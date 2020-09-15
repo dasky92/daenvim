@@ -73,8 +73,8 @@ let g:which_key_map.h = { 'name': 'Helps' }
 
 " Leaderf line
 let g:which_key_map.l = {'name': 'Lines'}
-" Show current line falke8 error msg
-"let g:which_key_map.L = {'name': 'ShowPyLintErr'}
+" leaderf rg -tbackend
+let g:which_key_map.L = {'name': 'AllLines'}
 
 " Leaderf commands
 let g:which_key_map.p = { 'name': 'Commands' }

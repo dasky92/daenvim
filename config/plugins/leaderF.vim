@@ -43,9 +43,15 @@ noremap <leader>p :<C-U><C-R>=printf("Leaderf command %s", "")<CR><CR>
 noremap <leader>r :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>t :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>h :<C-U><C-R>=printf("Leaderf help %s", "")<CR><CR>
+noremap <leader>l :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
+" Search lines in <PATH>, but need to spell <PATH> manual.
+" Like this: :Leaderf! rg -e 'hello' /home/user/test/
+noremap <Leader>L :<C-U><C-R>=printf("Leaderf! rg -e %s", "")<CR>
+noremap <Leader>W :<C-U><C-R>=printf("Leaderf! rg -tweb -e %s", "")<CR>
+noremap <Leader>B :<C-U><C-R>=printf("Leaderf! rg -tback -e %s", "")<CR>
 " search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+xnoremap gx :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 
 " TODO: gtags, rg commands
 " ===> gtags configuration for tags
@@ -61,33 +67,15 @@ let g:Lf_Gtagslabel = 'native-pygments'
 
 " ===> ripgrep configuration for fast search
 
+" -t, -T, -r
 let g:Lf_RgConfig = [
         \ "--max-columns=150",
-        \ "--type-add web:*.{html,css,js}*",
-        \ "--type-add backend:*.{go,c,cpp,h,py}*",
+        \ "--type-add=web:*.{html,css,js}",
+        \ "--type-add=back:*.{go,c,cpp,h,py}",
         \ "--glob=!git/*",
+        \ "--smart-case",
         \ "--hidden"
     \ ]
 
-"" search word under cursor, the pattern is treated as regex, and enter normal mode directly
-"noremap <leader>fe :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
-"
-"" search word under cursor, the pattern is treated as regex,
-"" append the result to previous search results.
-"noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
-"
-"" search word under cursor literally only in current buffer
-""noremap <leader>fb :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
-"
-"" search word under cursor literally in all listed buffers
-"noremap <leader>fB :<C-U><C-R>=printf("Leaderf! rg -F --all-buffers -e %s ", expand("<cword>"))<CR>
-"
-"" search visually selected text literally, don't quit LeaderF after accepting an entry
-"xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
-"
-"" recall last search. If the result window is closed, reopen it.
-"noremap <leader>fR :<C-U>Leaderf! rg --recall<CR>
-"
-"" search word under cursor in *.h and *.cpp files.
-"noremap <Leader>fs :<C-U><C-R>=printf("Leaderf! rg -e %s -g *.{h,c,cpp,go,py}", expand("<cword>"))<CR>
+
 

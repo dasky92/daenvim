@@ -29,7 +29,8 @@ brew install nodejs go python cmake
 
 ### TODO
 
-Customize leaderF's Keys, rg command.
+Customize leaderF's project files search, and more convinent project rg lines search.
+Or provide project autodiscover machnism.
 
 Complete for javascript, css, html, typescript, vue, etc.
 
