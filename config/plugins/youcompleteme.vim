@@ -15,6 +15,8 @@ nnoremap gr :YcmCompleter GoToReferences<CR>
 let g:ycm_global_ycm_extra_conf = ''
 " disable nover doc show
 let g:ycm_auto_hover = ''
+" Trigger documentation hover action
+nmap <leader>D <plug>(YCMHover)
 " enable in comments
 let g:ycm_complete_in_comments = 1
 " Collect from comments

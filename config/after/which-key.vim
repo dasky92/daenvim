@@ -49,6 +49,7 @@ let g:which_key_map.b = { 'name': 'Buffers' }
 " YouCompleteMe show detail diagnostic
 "let g:which_key_map.d = { 'name': 'YcmErrDetail' }
 let g:which_key_map.d = { 'name': 'NERDTreeToggle' }
+let g:which_key_map.D = { 'name': 'Documentation' }
 let g:which_key_map.e = {
     \ 'name': '+ChangeMove',
     \ 'j':    'signify-next',
