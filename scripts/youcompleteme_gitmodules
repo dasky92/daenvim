@@ -3,7 +3,7 @@
 	url = https://gitee.com/iprintf/requests-futures
 [submodule "third_party/ycmd"]
 	path = third_party/ycmd
-	url = https://gitee.com/coolloser/ycmd.git
+    url = https://gitee.com/dasky92/ycm_ycmd.git
 [submodule "third_party/requests_deps/idna"]
 	path = third_party/requests_deps/idna
 	url = https://gitee.com/mirrors/idna.git

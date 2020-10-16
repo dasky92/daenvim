@@ -18,7 +18,7 @@
 > git submodule init && git submodule update
 
 4. `Compile YouCompleteMe`
-> cd ~/.vim/pack/my/start/YouCompleteMe/ && ./build.py --clang-completer --clangd-completer --go-completer
+> cd ~/.vim/pack/my/start/YouCompleteMe/ && ./install.py --clang-completer --clangd-completer --go-completer
 
 ## Step2: Settings
 
