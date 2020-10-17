@@ -9,10 +9,17 @@ install_vim(){
     echo '==============================='
     case "$OSTYPE" in
         darwin*)
-          brew install global ripgrep cmake
+          echo y | brew install global ripgrep cmake
           ;;
         linux*)
-          sudo apt-get install global ripgrep cmake
+          if [ -e "/etc/lsb-release" ]; then
+            echo y | sudo apt-get install global ripgrep cmake
+          elif [ -e "/etc/redhat-release" ]; then
+            echo y | sudo yum install global ripgrep cmake
+          else
+            echo "Unsupported System type."
+            exit 1
+          fi
           ;;
         *)
           echo "unknown: OS: $OSTYPE, U should install dependences by yourself"
@@ -20,7 +27,7 @@ install_vim(){
           ;;
     esac
 
-    sudo pip install flake8 autopep8 pyvim neovim
+    pip install flake8 autopep8 pyvim neovim
 
     echo '==================================='
     echo 'start to download vim configuration'
