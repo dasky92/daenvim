@@ -392,7 +392,11 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 " tagbar for import, class, function, variables
 Plug 'majutsushi/tagbar'
-" colorscheme theme
+" manage ctags
+Plug 'ludovicchabant/vim-gutentags'
+" manage directory
+Plug 'justinmk/vim-dirvish'
+"colorscheme theme
 Plug 'doums/darcula'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
@@ -434,9 +438,10 @@ if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|s
     if !has('gui_running')
         let &t_Co = 256
     endif
-    " colorscheme darcula
-    colorscheme hemisu
-    set termguicolors
+    colorscheme darcula
+    " colorscheme hemisu
+    " only for iterm2, for terminal.app it will fault color
+    "set termguicolors
 else
     colorscheme hemisu
 endif
@@ -581,7 +586,7 @@ let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 " popup mode
 " Require vim 8.1.1615+, nvim 0.4.2+
-let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'bottom'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
