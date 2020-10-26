@@ -1,3 +1,0 @@
-[submodule "docs/source/_themes"]
-	path = docs/source/_themes
-	url = https://gitee.com/dasky92/ycm_flask-sphinx-themes.git

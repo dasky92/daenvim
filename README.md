@@ -34,6 +34,10 @@ Or provide project autodiscover machnism.
 
 Complete for javascript, css, html, typescript, vue, etc.
 
+Replace `exubrant-ctags` with `universal-ctags`.
+
+vim-dirvish manage your directory tree view.
+
 ### 
 
 |      key | say                 |

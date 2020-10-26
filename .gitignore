@@ -5,3 +5,5 @@ vimpack/*
 pack/*
 *.un~
 tags
+# Auto Updated when you install vim dotfiles.
+autoload/plug.vim

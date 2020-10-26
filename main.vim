@@ -34,10 +34,10 @@ let g:maplocalleader = ','
 " Require for all jedi Plugins: jedi, maccabe, flake8, pylint
 let g:python_host_prog = '/usr/bin/python'
 " ~/.pyenv/versions/3.8.5/envs/hello/bin/
-let g:python3_host_prog = '/usr/bin/pythons'
+let g:python3_host_prog = '/usr/bin/python3'
 " quick into command mode
 nnoremap ; :
-" }}} 
+" }}}
 
 " {{{ >>> UI Display <<<
 " show command in bottom bar
@@ -62,7 +62,7 @@ set wildmenu
 " redraw only when we need to.
 set lazyredraw
 set history=100
-" }}} 
+" }}}
 
 " {{{ >>> Fold <<<
 set foldenable
@@ -74,7 +74,7 @@ au BufRead *.vim set foldmethod=marker
 au BufRead vimrc set foldmethod=marker
 au BufRead *.py set foldmethod=indent
 " method: manual/indent/expr/syntax/diff/marker
-" }}} 
+" }}}
 
 " {{{ >>> Better Defaults <<<
 
@@ -153,8 +153,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-" jk is escape, <ESC> is very far away. jk is a much better.
-inoremap jk <ESC>
+" jj is escape, <ESC> is very far away. jk is a much better.
+inoremap jj <ESC>
 
 " move to beginning/end of line
 " 0 == ^
@@ -165,7 +165,8 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap zz :q!<CR>
-nnoremap <leader>s :w!<CR>
+" OFF, because it will trigger `REPLACE MODEL`
+"nnoremap <leader>s :w!<CR>
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -264,92 +265,17 @@ func! PRUN()
     endif
 endfunc
 " run python by F5
-nnoremap <leader>R :call PRUN()<CR>
+nnoremap <leader>r :call PRUN()<CR>
 " }}}
 
-" {{{ Abbrev
-" fix words automaticily if you usually spell it incorrect.
-iabbrev centre center
-iabbrev fucntion function
-iabbrev recieve receive
-iabbrev k8s kubernetes
-iabbrev githuib github
-iabbrev falke8 flake8
-" }}}
 
-" {{{ >>> Load Other Vim Scripts <<<
-
-let g:init = ''
-let g:start = (g:init) . '/start'
-let g:plugins = (g:init) . '/plugins'
-let g:after = (g:init) . '/after'
-let g:plug_control =  '/autoload'
-
-" ===> new configuration, need to test
-function! Dot(path)
-    return "~/.vim" . a:path
-endfunction
-
-function! Load(path)
-  for file in split(glob(Dot(a:path . '*.vim')), '\n')
-    execute 'source' file
-  endfor
-endfunction
-
-" Load other settings
-" call Load(g:plug_control)
-" " call Load(g:plugins_installed)
-" call Load(g:init)
-" call Load(g:start)
-" call Load(g:plugins)
-" call Load(g:after)
-
-
-
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/start/plug.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/abbrev.vim'
-
-
-" plugins/
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/colorscheme.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/easymotion.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/flake8.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/fzf.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/leaderF.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/lightline.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/markdown.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/nerdtree.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/pytest.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/rainbow.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/signify.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/surrouond.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/vimgo.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/youcompleteme.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/autopairs.vim'
-
-" Not used temporary.
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/tagbar.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/simplefold.vim'
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/plugins/indentline.vim'
-
-" after al plugins
-"execute 'source' fnamemodify(expand('<sfile>'), ':h').(g:init).'/after/which-key.vim'
-" }}}
 
 " }}}
 
 " {{{ plug download if not
 
-" {{{ Download plug.vim
-" let using_neovim = has('nvim')
-let using_neovim = ""
-if using_neovim
-    let vim_config_root_path = '~/.config/nvim/'
-else
-    let vim_config_root_path = '~/.vim/'
-endif
 
+let vim_config_root_path = '~/.vim/'
 let plug_begin = expand(vim_config_root_path) . 'plugged'
 let vim_plug_path = expand(vim_config_root_path) . 'autoload/plug.vim'
 
@@ -358,20 +284,15 @@ let vim_plug_need_install = 0
 if !filereadable(vim_plug_path)
     echo "Installing Vim-Plug"
     echo ""
-    if using_neovim
-	silent !mkdir -p ~/.config/nvim/autoload
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    else
 	silent !mkdir -p ~/.vim/autoload
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    endif
     let vim_plug_need_install = 1
 endif
 
-if vim_plug_need_install 
+if vim_plug_need_install
     :execute 'source '.fnamescape(vim_plug_path)
 endif
-" }}}
+
 " }}}
 
 " {{{ >>> Plugins <<<
@@ -390,24 +311,25 @@ Plug 'itchyny/lightline.vim'
 " Directory Manager
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
-" tagbar for import, class, function, variables
-Plug 'majutsushi/tagbar'
-" manage ctags
-Plug 'ludovicchabant/vim-gutentags'
-" manage directory
-Plug 'justinmk/vim-dirvish'
+" manage ctags in the future, now in leaderF gtags
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
 "colorscheme theme
 Plug 'doums/darcula'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
+" 前后空格显示告警色
+Plug 'bronson/vim-trailing-whitespace'
 " work better for python file.
 Plug 'jiangmiao/auto-pairs'
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 " better move
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" Supply Mechanism for self-defined snippets 
+" 异步执行插件
+Plug 'skywind3000/asyncrun.vim'
+" Supply Mechanism for self-defined snippets
 Plug 'sirver/ultisnips'
 " Predefined snippets
 Plug 'honza/vim-snippets'
@@ -416,11 +338,11 @@ Plug 'liuchengxu/vim-which-key'
 " no prebuild, need for nodejs and yarn
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Insert toc for markdown
-Plug 'mzlogin/vim-markdown-toc'
+Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 " =============== Python ==============
-Plug 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8', { 'for': 'python' }
 " py.test for python
-Plug 'alfredodeza/pytest.vim'
+Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 " =============== Go ==============
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 call plug#end()
@@ -431,17 +353,15 @@ endif
 
 " }}}
 
-"  {{{ Plugin Settings
+" {{{ Plugin Settings
 
 " {{{ ColorScheme
-if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256')
+if has('gui_running') || (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256')
     if !has('gui_running')
         let &t_Co = 256
     endif
-    colorscheme darcula
+    colorscheme onedark
     " colorscheme hemisu
-    " only for iterm2, for terminal.app it will fault color
-    "set termguicolors
 else
     colorscheme hemisu
 endif
@@ -490,65 +410,6 @@ highlight link Flake8_PyFlake    WarningMsg
 
 " }}}
 
-" {{{ OFF: fzf.vim and Documentation
-
-" file finder mapping
-" Custom command GGrep, search lines within git root path
-"command! -bang -nargs=* GGrep
-"  \ call fzf#vim#grep(
-"  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-"  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-"nnoremap <leader>ff :Files<CR>
-"nmap <leader>ff :GFiles<CR>
-"nmap <leader>fg :GGrep<CR>
-" tags (symbols) in current file finder mapping
-"nmap <leader>ft :BTag<CR>
-" tags (symbols) in all files finder mapping
-"nmap <leader>fT :Tags<CR>
-
-"nmap <leader>fs :BLines<CR>
-" general code finder in all files mapping
-"nmap <leader>fS :Lines<CR>
-" commands finder mapping
-" TODO: used often???
-"nmap <leader>cc :Commands<CR>
-" vim help
-"nmap <leader>h :Helptags<CR>
-" key-map-settings
-"nmap <leader>k :Maps<CR>
-" :GFiles [OPTS]       Git files (git ls-files)
-" :GFiles?             git status
-" :Colors              colorschemes
-" :(B)Lines [QUERY]    Lines in loaded buffers
-" :(B)Tags [QUERY]     Tags in the project (ctags -R)
-" :Marks
-" :Windows
-" :Snippets            (UltiSnips)
-" :(B)Commits          Git commits(require fugitive.vim)
-" :Commands
-" :Maps                Normal mode mappings
-" :Buffers             Buffer list
-" :Helptags
-" :Filetypes
-" Custom your command 'search git lines in project'
-
-" Mapping selecting mappings
-"nmap <leader><tab> <plug>(fzf-maps-n)
-"xmap <leader><tab> <plug>(fzf-maps-x)
-"omap <leader><tab> <plug>(fzf-maps-o)
-" Insert mode completion
-"imap <c-x><c-k> <plug>(fzf-complete-word)
-"imap <c-x><c-f> <plug>(fzf-complete-path)
-"imap <c-x><c-l> <plug>(fzf-complete-line)
-
-
-
-" }}}
-
-" {{{ Tagbar
-map <leader>T :TagbarToggle<CR>
-" }}}
 
 " {{{ LeaderF
 
@@ -582,8 +443,12 @@ set ambiwidth=double
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
+" Default: $HOME
+"let g:Lf_CacheDirectory = expand($HOME)
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_ShowRelativePath = 0
 " popup mode
 " Require vim 8.1.1615+, nvim 0.4.2+
 let g:Lf_WindowPosition = 'bottom'
@@ -591,13 +456,16 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>f"
+let g:Lf_ShortcutF = "<leader>p"
 noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>p :<C-U><C-R>=printf("Leaderf command %s", "")<CR><CR>
-noremap <leader>r :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>t :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>c :<C-U><C-R>=printf("Leaderf command %s", "")<CR><CR>
+noremap <leader>e :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+" `function` be included in `bufTag`
+noremap <leader>f :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>t :<C-U><C-R>=printf("Leaderf tag %s", "")<CR><CR>
 noremap <leader>h :<C-U><C-R>=printf("Leaderf help %s", "")<CR><CR>
 noremap <leader>l :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+"noremap <leader>m :<C-U><C-R>=printf("Leaderf window %s", "")<CR><CR>
 
 " Search lines in <PATH>, but need to spell <PATH> manual.
 " Like this: :Leaderf! rg -e 'hello' /home/user/test/
@@ -636,7 +504,7 @@ let g:Lf_RgConfig = [
 
 " }}}
 
-" {{{ signify 
+" {{{ signify
 
 " default updatetime 4000ms is not good for async update
 set updatetime=100
@@ -768,19 +636,8 @@ let g:mkdp_port = '7000'
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
-
-
-" mardown-preview ===================================
-" p -> start preview
-" P -> stop preview
-" This action is not often used, so forbidden it.
-" 
-"nmap <leader>p <Plug>MarkdownPreview
-"nmap <leader>P <Plug>MarkdownPreviewStop
-
-
 " }}}
- 
+
 " {{{ nerdtree
 
 map <leader>d :NERDTreeToggle<CR>
@@ -804,7 +661,7 @@ function! NERDTreeRefresh()
     endif
 endfunction
 
-autocmd BufEnter * call NERDTreeRefresh()
+silent autocmd BufEnter * call NERDTreeRefresh()
 
 " }}}
 
@@ -814,7 +671,8 @@ let g:rainbow_active=1
 
 " }}}
 
-" {{{ surround documentation 
+"hello world"
+"{{{ surround documentation
 
 " "hello world" -> cs"' -> 'hello world'
 " cs'<a> -> <a>hello world</a>
@@ -1040,14 +898,16 @@ let g:which_key_map['/'] = ['gcc']
 " Leaderf buffer
 let g:which_key_map.b = { 'name': 'Buffers' }
 " Leader command
-" let g:which_key_map.c = {
-"             \ 'name': 'Commands',
-"             \ }
- 
+let g:which_key_map.c = {
+            \ 'name': 'Commands',
+            \ }
+
 " YouCompleteMe show detail diagnostic
 "let g:which_key_map.d = { 'name': 'YcmErrDetail' }
 let g:which_key_map.d = { 'name': 'NERDTreeToggle' }
-let g:which_key_map.D = { 'name': 'Documentation' }
+let g:which_key_map.D = { 'name': 'Doc' }
+
+let g:which_key_map.e = {'name': 'Recent Used Files'}
 let g:which_key_map.e = {
     \ 'name': '+ChangeMove',
     \ 'j':    'signify-next',
@@ -1055,7 +915,7 @@ let g:which_key_map.e = {
     \ }
 
 let g:which_key_map.f = {
-            \ 'name': 'Files',
+            \ 'name': 'Functions',
             \ }
 
 " let g:which_key_map.i = { 'name': 'REPLToggle' }
@@ -1072,25 +932,23 @@ let g:which_key_map.h = { 'name': 'Helps' }
 
 " Leaderf line
 let g:which_key_map.l = {'name': 'Lines'}
-" leaderf rg -tbackend
+" leaderf rg -tbackend in git project root.
 let g:which_key_map.L = {'name': 'AllLines'}
 
 " Leaderf commands
-let g:which_key_map.p = { 'name': 'Commands' }
+let g:which_key_map.p = { 'name': 'Files' }
 "let g:which_key_map.P = { 'name': 'Flake8_Check' }
-" Leaderf mru
-let g:which_key_map.r = {'name': 'RecentFiles'}
 " PRUN()
-let g:which_key_map.R = { 'name': 'Run' }
+let g:which_key_map.r = { 'name': 'Run' }
 " :w<cr>
-let g:which_key_map.s = {
-    \ 'name': 'Save',
-    \ }
+" let g:which_key_map.s = {
+"     \ 'name': 'Save',
+"     \ }
 
 " Think: set `T` for pytest.
 " Leaderf bugTag
 let g:which_key_map.t = {
-    \ 'name': '+Tags|Symbols',
+    \ 'name': '+Tags',
     \ }
 
 " let g:which_key_map.T = { 'name' : 'Symbols' }
@@ -1115,6 +973,73 @@ let g:which_key_map.t = {
 "      \ 'v' : ['<C-w>v',        'split-window-below'],
 "      \ 'w' : ['Windows',               'fzf-window'],
 "      \ }
+" }}}
+
+" {{{ gutengtags
+"
+"yum install -y global-ctags or global ?
+set tags=./.tags;,.tags
+let $GTAGSLABEL = 'pygments'
+"let $GTAGSCONF = '/etc/gtags.conf'
+
+" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+let g:gutentags_project_root = ['.git','.root','.svn','.hg','.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+if executable('ctags')
+	let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+	let g:gutentags_modules += ['gtags_cscope']
+endif
+
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = []
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 如果使用 universal ctags 需要增加下面一行
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+" 禁用 gutentags 自动加载 gtags 数据库的行为
+" 避免多个项目 数据库 相互干扰,使用plus插件解决问题
+let g:gutentags_auto_add_gtags_cscope = 0
+
+"let g:gutentags_define_advanced_commands = 1
+
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+
+" default keymap
+"<leader>cs	Find symbol (reference) under cursor
+"<leader>cg	Find symbol definition under cursor
+"<leader>cd	Functions called by this function
+"<leader>cc	Functions calling this function
+"<leader>ct	Find text string under cursor
+"<leader>ce	Find egrep pattern under cursor
+"<leader>cf	Find file name under cursor
+"<leader>ci	Find files #including the file name under cursor
+"<leader>ca	Find places where current symbol is assigned
+" }}}
+
+
+" {{{ Abbrev
+" fix words automaticily if you usually spell it incorrect.
+iabbrev centre center
+iabbrev fucntion function
+iabbrev recieve receive
+iabbrev k8s kubernetes
+iabbrev githuib github
+iabbrev falke8 flake8
+iabbrev dcoker docker
 " }}}
 
 " }}}

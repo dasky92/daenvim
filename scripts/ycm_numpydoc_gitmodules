@@ -1,3 +1,0 @@
-[submodule "doc/scipy-sphinx-theme"]
-	path = doc/scipy-sphinx-theme
-	url = https://gitee.com/dasky92/ycm_scipy-sphinx-theme.git
